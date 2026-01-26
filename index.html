@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0B1E33" />
+  <meta name="description" content="Rejane Silva — Mestre em Direito Tributário e Previdenciário" />
+  <title>Rejane Silva | Advocacia Tributária e Previdenciária</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="topbar__inner">
+      <div class="topbar__left">
+        <a class="topbar__item" href="tel:+5565999964842" aria-label="Telefone">
+          <span class="dot"></span>
+          <span>(65) 99996-4842</span>
+        </a>
+        <a class="topbar__item" href="mailto:rejanesilva.advocacia@hotmail.com" aria-label="Email">
+          <span class="dot"></span>
+          <span>rejanesilva.advocacia@hotmail.com</span>
+        </a>
+      </div>
+
+      <div class="topbar__right">
+        <div class="topbar__item" aria-label="Endereço">
+          <span class="dot"></span>
+          <span>Av. Desembargador J.P.F. Mendes, n° 544, Centro, Diamantino-MT</span>
+        </div>
+
+        <div class="lang">
+          <button class="lang__btn" data-lang="pt" aria-label="Português">PT</button>
+          <button class="lang__btn" data-lang="en" aria-label="English">EN</button>
+          <button class="lang__btn" data-lang="es" aria-label="Español">ES</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero header -->
+  <header class="hero">
+    <div class="hero__bg"></div>
+    <div class="container hero__content">
+      <img class="hero__logo" src="./assets/logo.png" alt="Rejane Silva — Advocacia e Consultoria" />
+
+      <div class="hero__titleblock">
+        <h1 class="hero__name" data-i18n="brand.name">REJANE SILVA</h1>
+        <div class="hero__subtitle" data-i18n="brand.subtitle">Advogada | LL.M</div>
+        <div class="hero__line"></div>
+        <h2 class="hero__headline" data-i18n="home.headline">Advocacia Tributária e Previdenciária</h2>
+        <p class="hero__tagline" data-i18n="home.tagline">Defendendo seus direitos com excelência</p>
+
+        <div class="hero__cta">
+          <a class="btn btn--gold" href="#/sobre" data-i18n="home.cta">Saiba mais</a>
+          <a class="btn btn--ghost" href="#/agendar" data-i18n="home.cta2">Agendar atendimento</a>
+        </div>
+      </div>
+
+      <div class="hero__wave"></div>
+    </div>
+
+    <!-- Nav -->
+    <nav class="nav">
+      <div class="container nav__inner">
+        <a class="nav__link" href="#/home" data-i18n="nav.home">Home</a>
+        <a class="nav__link" href="#/sobre" data-i18n="nav.about">Sobre</a>
+        <a class="nav__link" href="#/educacao" data-i18n="nav.education">Educação</a>
+        <a class="nav__link" href="#/experiencia" data-i18n="nav.experience">Experiência</a>
+        <a class="nav__link" href="#/contato" data-i18n="nav.contact">Contato</a>
+        <a class="nav__link nav__link--pill" href="#/agendar" data-i18n="nav.schedule">Agendar Atendimento</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main (SPA pages) -->
+  <main class="container main">
+    <section id="page" class="page page--enter"></section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <div class="footer__name">Rejane Silva</div>
+        <div class="footer__desc" data-i18n="footer.desc">Mestre em Direito Tributário e Previdenciário</div>
+      </div>
+
+      <div class="footer__contacts">
+        <a href="tel:+5565999964842">(65) 99996-4842</a>
+        <a href="mailto:rejanesilva.advocacia@hotmail.com">rejanesilva.advocacia@hotmail.com</a>
+        <span>Av. Desembargador J.P.F. Mendes, n° 544, Centro, Diamantino-MT</span>
+      </div>
+
+      <div class="footer__copy" data-i18n="footer.copy">© <span id="year"></span> — Todos os direitos reservados.</div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a id="whatsFloat" class="whats" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <span class="whats__icon">✆</span>
+    <span class="whats__text" data-i18n="whats.float">WhatsApp</span>
+  </a>
+
+  <script src="./js/i18n.js"></script>
+  <script src="./js/calendar.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+</html>
