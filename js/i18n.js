@@ -1,19 +1,51 @@
 // js/i18n.js
 window.I18N = {
   pt: {
-    // Brand / Hero
+    // ===== HERO / BRAND =====
     "brand.name": "REJANE MARIA BARROS SILVA",
+    "brand.nameFull": "Rejane Maria Barros Silva",
     "brand.subtitle": "Advogada — OAB/MT 29.296",
     "brand.chip1": "Mestre em Economia (UFMT)",
     "brand.chip2": "Pós-grad. em Direito Tributário e Previdenciário (ESA Nacional)",
 
-    // Home hero texts
+    // ===== HOME =====
+    "home.kicker": "Advocacia Tributária e Previdenciária",
+    "home.meta1": "Advogada — OAB/MT 29.296",
+    "home.meta2": "Mestre em Economia (UFMT)",
+    "home.meta3": "Pós-graduada em Direito Tributário e Previdenciário (ESA Nacional)",
+
     "home.headline": "Advocacia Tributária e Previdenciária",
     "home.tagline": "Atuação técnica e estratégica com foco em segurança jurídica, análise individualizada e soluções responsáveis.",
+    "home.lead": "Atuação técnica e estratégica em Direito Tributário e Direito Previdenciário, com foco em segurança jurídica, análise individualizada e soluções responsáveis.",
     "home.ctaSchedule": "Agendar Atendimento",
     "home.ctaWhats": "Falar no WhatsApp",
+    "home.helpTitle": "Como posso te ajudar",
 
-    // Nav
+    "home.prevTitle": "Direito Previdenciário",
+    "home.prev.1": "Planejamento previdenciário",
+    "home.prev.2": "Aposentadorias",
+    "home.prev.3": "BPC/LOAS",
+    "home.prev.4": "Auxílio por incapacidade",
+    "home.prev.5": "Revisão de benefícios",
+    "home.prev.6": "Recursos administrativos no INSS",
+    "home.prev.7": "Ações judiciais contra indeferimentos",
+
+    "home.tribTitle": "Direito Tributário",
+    "home.trib.1": "Regularização de débitos fiscais",
+    "home.trib.2": "Parcelamentos e transação tributária",
+    "home.trib.3": "Defesa em autos de infração",
+    "home.trib.4": "Planejamento tributário lícito",
+    "home.trib.5": "Consultoria para empresas e profissionais liberais",
+    "home.trib.6": "Recuperação de créditos tributários (quando juridicamente cabível)",
+
+    "home.diffTitle": "Diferenciais profissionais",
+    "home.diff.1": "Atendimento técnico e individualizado",
+    "home.diff.2": "Atuação ética e responsável",
+    "home.diff.3": "Formação acadêmica sólida",
+    "home.diff.4": "Análise estratégica de riscos e viabilidade",
+    "home.diff.5": "Clareza na orientação jurídica",
+
+    // ===== NAV =====
     "nav.home": "Início",
     "nav.about": "Quem Sou",
     "nav.areas": "Atuação",
@@ -27,22 +59,145 @@ window.I18N = {
     "nav.contact": "Contato",
     "nav.schedule": "Agendamento",
 
-    // Atendimento / Care
+    // ===== ABOUT (QUEM SOU) =====
+    "about.p1":
+      "Sou advogada regularmente inscrita na OAB/MT sob o nº 29.296, com atuação nas áreas de Direito Tributário e Direito Previdenciário. Sou Mestre em Economia pela Universidade Federal de Mato Grosso (UFMT) e possuo pós-graduação em Direito Tributário e Direito Previdenciário pela Escola Superior de Advocacia Nacional.",
+    "about.trajTitle": "Trajetória",
+    "about.trajText":
+      "Minha atuação profissional é pautada pela análise técnica rigorosa, responsabilidade ética e busca por soluções jurídicas sustentáveis. Ao longo da minha trajetória, atuei no Tribunal de Justiça, Justiça Federal e em escritório de advocacia, além de ter experiência em docência universitária.",
+    "about.commitTitle": "Compromisso",
+    "about.commitText":
+      "Acredito em uma advocacia séria, estratégica e comprometida com a proteção dos direitos dos clientes, sem promessas de resultado e com orientação clara e responsável.",
+    "about.onlineTitle": "Atendimento Online",
+    "about.onlineText": "Atendimento jurídico online para todo o Brasil, com segurança e sigilo.",
+
+    // ===== AREAS (ATUAÇÃO) =====
+    "areas.lead": "Áreas de atuação com análise detalhada de cada caso.",
+    "areas.prevTitle": "Direito Previdenciário",
+    "areas.prev.1": "Planejamento previdenciário",
+    "areas.prev.2": "Aposentadorias",
+    "areas.prev.3": "Benefício por incapacidade",
+    "areas.prev.4": "BPC/LOAS",
+    "areas.prev.5": "Revisões de benefícios",
+    "areas.prev.6": "Recursos administrativos",
+    "areas.prev.7": "Ações judiciais",
+
+    "areas.tribTitle": "Direito Tributário",
+    "areas.trib.1": "Diagnóstico tributário preventivo",
+    "areas.trib.2": "Regularização fiscal",
+    "areas.trib.3": "Defesa administrativa e judicial",
+    "areas.trib.4": "Planejamento tributário lícito",
+    "areas.trib.5": "Consultoria para escolha de regime tributário",
+    "areas.trib.6": "Recuperação de créditos",
+
+    "strategy.title": "Atuação Estratégica",
+    "strategy.text":
+      "O escritório trabalha com análise técnica profunda, sem promessas, priorizando soluções sustentáveis e estudo individualizado de cada caso.",
+
+    "partners.title": "Parcerias profissionais",
+    "partners.text": "Em breve.",
+
+    // ===== SERVICES =====
+    "services.lead":
+      "Os serviços abaixo são prestados mediante análise individualizada do caso concreto, com atuação técnica, ética e responsável, observando-se as normas do Código de Ética e Disciplina da OAB.",
+
+    "packages.title": "Pacotes profissionais",
+    "packages.tagPrev": "Previdenciário",
+    "packages.tagTrib": "Tributário",
+    "packages.tagSub": "Assinatura",
+
+    "packages.p1.title": "Planejamento Previdenciário Essencial",
+    "packages.p1.text": "Análise inicial, organização documental e orientação objetiva para o melhor caminho previdenciário.",
+    "packages.p2.title": "Planejamento Previdenciário Estratégico",
+    "packages.p2.text": "Análise de cenários, estratégia completa, revisão de CNIS/vínculos e plano contributivo quando necessário.",
+    "packages.p3.title": "Diagnóstico Tributário Preventivo",
+    "packages.p3.text": "Mapeamento de riscos e oportunidades com foco em prevenção e regularidade fiscal.",
+    "packages.p4.title": "Consultoria Tributária Empresarial",
+    "packages.p4.text": "Apoio técnico contínuo para empresas e profissionais liberais, com orientação prática e segurança jurídica.",
+    "packages.p5.title": "Acompanhamento Jurídico Mensal",
+    "packages.p5.text": "Modelo de acompanhamento por assinatura para demandas consultivas e preventivas.",
+
+    "services.peopleTitle": "Para pessoas físicas (Previdenciário e Consultivo)",
+    "services.people.1": "Consulta jurídica estruturada (presencial ou online)",
+    "services.people.2": "Parecer jurídico individualizado por escrito",
+    "services.people.3": "Segunda opinião jurídica em casos complexos",
+    "services.people.4": "Planejamento previdenciário completo (análise de cenários e estratégia)",
+    "services.people.5": "Revisão técnica de CNIS e vínculos contributivos",
+    "services.people.6": "Organização e auditoria documental previdenciária",
+    "services.people.7": "Análise de indeferimentos do INSS",
+    "services.people.8": "Recursos administrativos no INSS",
+    "services.people.9": "Ações judiciais previdenciárias",
+    "services.people.10": "Revisão de benefícios (quando juridicamente cabível)",
+    "services.people.11": "Pedido de concessão e manutenção de benefícios",
+    "services.people.12": "Acompanhamento integral de processos administrativos",
+    "services.people.13": "Orientação para contribuições em atraso e regularização contributiva",
+    "services.people.14": "Planejamento contributivo para autônomos e contribuintes individuais",
+    "services.people.15": "Atendimento especializado para casos de incapacidade",
+    "services.people.16": "Orientação jurídica em casos de pensão por morte",
+    "services.people.17": "Assessoria para segurados especiais e trabalhadores rurais",
+
+    "services.bizTitle": "Para empresas e profissionais liberais (Tributário e Consultoria)",
+    "services.biz.1": "Diagnóstico tributário preventivo",
+    "services.biz.2": "Check-up fiscal periódico",
+    "services.biz.3": "Regularização de débitos fiscais",
+    "services.biz.4": "Parcelamentos e transação tributária",
+    "services.biz.5": "Defesa em autos de infração",
+    "services.biz.6": "Defesa em processos administrativos fiscais",
+    "services.biz.7": "Consultoria para escolha de regime tributário",
+    "services.biz.8": "Planejamento tributário lícito",
+    "services.biz.9": "Consultoria tributária contínua (modelo assinatura)",
+    "services.biz.10": "Análise de riscos fiscais e contingências",
+    "services.biz.11": "Revisão básica de obrigações acessórias",
+    "services.biz.12": "Apoio jurídico em fiscalizações",
+    "services.biz.13": "Orientação para abertura e estruturação de negócios",
+    "services.biz.14": "Assessoria jurídica para profissionais liberais",
+    "services.biz.15": "Consultoria para clínicas, pequenos negócios e prestadores de serviço",
+    "services.biz.16": "Análise jurídica de contratos empresariais simples",
+    "services.biz.17": "Revisão de práticas internas com foco em prevenção de passivos",
+
+    "services.advTitle": "Serviços estratégicos e consultivos avançados",
+    "services.adv.1": "Análise de viabilidade jurídica de demandas",
+    "services.adv.2": "Estudo estratégico de caso (preventivo ou contencioso)",
+    "services.adv.3": "Estruturação de estratégia processual",
+    "services.adv.4": "Elaboração de pareceres técnicos fundamentados",
+    "services.adv.5": "Planejamento jurídico preventivo",
+    "services.adv.6": "Organização jurídica de documentação para processos",
+    "services.adv.7": "Acompanhamento jurídico estratégico de casos sensíveis",
+
+    "services.acadTitle": "Serviços acadêmicos e técnicos complementares",
+    "services.acad.1": "Revisão técnica de textos jurídicos",
+    "services.acad.2": "Orientação metodológica para artigos, TCC e pós-graduação",
+    "services.acad.3": "Consultoria acadêmica jurídica",
+    "services.acad.4": "Apoio técnico para elaboração de pareceres e artigos jurídicos",
+
+    "fees.title": "Honorários (orientativo)",
+    "fees.text":
+      "Os honorários seguem a tabela da OAB e variam conforme a complexidade do caso, com contrato formal. Prezamos por transparência e alinhamento claro do escopo antes do início do trabalho.",
+
+    // ===== CARE / ATENDIMENTO =====
     "care.howTitle": "Como funciona o atendimento",
-    "care.step1t": "1) Agendamento",
-    "care.step1p": "Atendimento mediante agendamento prévio (presencial ou online).",
-    "care.step2t": "2) Primeira análise do caso",
-    "care.step2p": "Coleta de informações e análise inicial para compreender riscos, viabilidade e próximos passos.",
-    "care.step3t": "3) Forma de contratação",
-    "care.step3p": "Contratação formal com definição de escopo, prazos e honorários.",
-    "care.step4t": "4) Acompanhamento",
-    "care.step4p": "Acompanhamento estratégico e comunicação objetiva sobre evolução e providências.",
+    "care.s1.t": "1) Agendamento",
+    "care.s1.p": "Atendimento mediante agendamento prévio (presencial ou online).",
+    "care.s2.t": "2) Primeira análise do caso",
+    "care.s2.p": "Coleta de informações e análise inicial para compreender riscos, viabilidade e próximos passos.",
+    "care.s3.t": "3) Forma de contratação",
+    "care.s3.p": "Contratação formal por instrumento adequado, definindo escopo, prazos e honorários.",
+    "care.s4.t": "4) Acompanhamento",
+    "care.s4.p": "Acompanhamento estratégico e comunicação objetiva sobre evolução e providências.",
     "care.onlineTitle": "Atendimento Online",
     "care.onlineText": "Atendimento jurídico online para todo o Brasil, com segurança e sigilo.",
+    "care.ctaSchedule": "Agendamento",
+    "care.ctaWhats": "WhatsApp Profissional",
 
-    // Contents overview
+    // ===== CONTACT =====
+    "contact.lead": "Atendimento mediante agendamento prévio.",
+    "contact.channels": "Canais de contato",
+    "contact.phone": "Telefone/WhatsApp",
+    "contact.email": "E-mail",
+    "contact.addr": "Endereço",
+
+    // ===== CONTENTS (MENU SUB) =====
     "contents.lead": "Artigos, atualizações jurídicas, materiais informativos e perguntas frequentes.",
-    "contents.open": "Abrir",
 
     // Articles
     "articles.lead": "Textos educativos e informativos (exemplos).",
@@ -67,7 +222,7 @@ window.I18N = {
     "materials.5": "Direitos básicos do segurado (PDF)",
 
     // FAQ
-    "faq.lead": "Perguntas frequentes (FAQ).",
+    "faq.lead": "Perguntas Frequentes (FAQ).",
     "faq.q1": "Quem tem direito ao BPC/LOAS?",
     "faq.q2": "Quanto tempo demora um processo previdenciário?",
     "faq.q3": "Posso me aposentar mesmo com contribuições em atraso?",
@@ -75,29 +230,70 @@ window.I18N = {
     "faq.q5": "Tenho dívida tributária, posso abrir empresa?",
     "faq.q6": "Posso parcelar débitos fiscais?",
 
-    // Footer
+    // ===== SCHEDULE =====
+    "schedule.title": "Agendamento Online",
+    "schedule.lead":
+      "Selecione um dia disponível para solicitar seu atendimento via WhatsApp (mensagem pronta). Prazos de resposta podem variar conforme demanda.",
+    "schedule.pick": "Selecione um dia disponível:",
+    "schedule.confirm": "Confirmar no WhatsApp",
+    "schedule.note": "A agenda abaixo mostra apenas os dias disponíveis. Você pode editar os dias no arquivo js/calendar.js.",
+
+    // ===== FOOTER =====
     "footer.name": "Rejane Maria Barros Silva — OAB/MT 29.296",
     "footer.desc": "Atuação profissional pautada na ética, na responsabilidade técnica e no respeito às normas da OAB.",
+    "footer.disclaimerTitle": "Aviso importante",
+    "footer.disclaimerText": "Conteúdos disponibilizados possuem caráter informativo e não configuram promessa de resultado.",
     "footer.disclaimer": "Conteúdos disponibilizados possuem caráter informativo e não configuram promessa de resultado.",
     "footer.privacy": "Política de Privacidade",
     "footer.terms": "Termos de Uso",
     "footer.online": "Atendimento jurídico online para todo o Brasil, com segurança e sigilo.",
-    "footer.copy": "© {year} — Todos os direitos reservados.",
 
-    // Whats
+    // ===== WHATS =====
     "whats.float": "WhatsApp"
   },
 
+  // ===== EN =====
   en: {
     "brand.name": "REJANE MARIA BARROS SILVA",
+    "brand.nameFull": "Rejane Maria Barros Silva",
     "brand.subtitle": "Attorney — OAB/MT 29.296",
     "brand.chip1": "MSc in Economics (UFMT)",
     "brand.chip2": "Postgraduate in Tax & Social Security Law (ESA Nacional)",
 
+    "home.kicker": "Tax & Social Security Law",
+    "home.meta1": "Attorney — OAB/MT 29.296",
+    "home.meta2": "MSc in Economics (UFMT)",
+    "home.meta3": "Postgraduate in Tax & Social Security Law (ESA Nacional)",
     "home.headline": "Tax & Social Security Law",
     "home.tagline": "Technical and strategic practice focused on legal certainty, individualized analysis, and responsible solutions.",
+    "home.lead": "Technical and strategic practice in Tax Law and Social Security Law, focused on legal certainty, individualized analysis, and responsible solutions.",
     "home.ctaSchedule": "Schedule an Appointment",
     "home.ctaWhats": "Chat on WhatsApp",
+    "home.helpTitle": "How I can help",
+
+    "home.prevTitle": "Social Security Law",
+    "home.prev.1": "Social security planning",
+    "home.prev.2": "Retirement benefits",
+    "home.prev.3": "BPC/LOAS",
+    "home.prev.4": "Disability benefit",
+    "home.prev.5": "Benefit reviews",
+    "home.prev.6": "INSS administrative appeals",
+    "home.prev.7": "Lawsuits against denials",
+
+    "home.tribTitle": "Tax Law",
+    "home.trib.1": "Tax debt regularization",
+    "home.trib.2": "Installments and tax settlement",
+    "home.trib.3": "Defense in tax assessments",
+    "home.trib.4": "Lawful tax planning",
+    "home.trib.5": "Advisory for companies and professionals",
+    "home.trib.6": "Tax credit recovery (when legally applicable)",
+
+    "home.diffTitle": "Professional highlights",
+    "home.diff.1": "Technical and individualized service",
+    "home.diff.2": "Ethical and responsible practice",
+    "home.diff.3": "Strong academic background",
+    "home.diff.4": "Strategic risk and feasibility analysis",
+    "home.diff.5": "Clear legal guidance",
 
     "nav.home": "Home",
     "nav.about": "About",
@@ -112,21 +308,138 @@ window.I18N = {
     "nav.contact": "Contact",
     "nav.schedule": "Scheduling",
 
+    "about.p1":
+      "I am an attorney registered with OAB/MT no. 29.296, practicing Tax Law and Social Security Law. I hold an MSc in Economics from UFMT and a postgraduate degree in Tax and Social Security Law from ESA Nacional.",
+    "about.trajTitle": "Background",
+    "about.trajText":
+      "My work is guided by rigorous technical analysis, ethical responsibility, and sustainable legal solutions. I have worked at the State Court, Federal Court, and in a law firm, and I also have university teaching experience.",
+    "about.commitTitle": "Commitment",
+    "about.commitText":
+      "I believe in serious, strategic advocacy committed to protecting clients’ rights, without promises of results and with clear, responsible guidance.",
+    "about.onlineTitle": "Online Service",
+    "about.onlineText": "Online legal service for all Brazil, with security and confidentiality.",
+
+    "areas.lead": "Practice areas with detailed case-by-case analysis.",
+    "areas.prevTitle": "Social Security Law",
+    "areas.prev.1": "Social security planning",
+    "areas.prev.2": "Retirement",
+    "areas.prev.3": "Disability benefits",
+    "areas.prev.4": "BPC/LOAS",
+    "areas.prev.5": "Benefit reviews",
+    "areas.prev.6": "Administrative appeals",
+    "areas.prev.7": "Lawsuits",
+
+    "areas.tribTitle": "Tax Law",
+    "areas.trib.1": "Preventive tax diagnosis",
+    "areas.trib.2": "Tax regularization",
+    "areas.trib.3": "Administrative and judicial defense",
+    "areas.trib.4": "Lawful tax planning",
+    "areas.trib.5": "Tax regime advisory",
+    "areas.trib.6": "Tax credit recovery",
+
+    "strategy.title": "Strategic Approach",
+    "strategy.text":
+      "We work with deep technical analysis, no promises, prioritizing sustainable solutions and individualized case studies.",
+
+    "partners.title": "Professional partnerships",
+    "partners.text": "Coming soon.",
+
+    "services.lead":
+      "Services are provided after individualized analysis of the specific case, with technical, ethical, and responsible performance, in compliance with OAB rules.",
+    "packages.title": "Professional packages",
+    "packages.tagPrev": "Social Security",
+    "packages.tagTrib": "Tax",
+    "packages.tagSub": "Subscription",
+
+    "packages.p1.title": "Essential Social Security Planning",
+    "packages.p1.text": "Initial assessment, document organization, and objective guidance.",
+    "packages.p2.title": "Strategic Social Security Planning",
+    "packages.p2.text": "Scenario analysis, full strategy, CNIS review, and contribution plan when needed.",
+    "packages.p3.title": "Preventive Tax Diagnosis",
+    "packages.p3.text": "Risk/opportunity mapping focused on prevention and compliance.",
+    "packages.p4.title": "Business Tax Advisory",
+    "packages.p4.text": "Ongoing technical support for companies and professionals.",
+    "packages.p5.title": "Monthly Legal Follow-up",
+    "packages.p5.text": "Subscription model for consultative and preventive demands.",
+
+    "services.peopleTitle": "For individuals (Social Security & Advisory)",
+    "services.people.1": "Structured legal consultation (in-person or online)",
+    "services.people.2": "Written individualized legal opinion",
+    "services.people.3": "Second opinion in complex cases",
+    "services.people.4": "Complete social security planning (scenarios & strategy)",
+    "services.people.5": "CNIS review",
+    "services.people.6": "Document audit and organization",
+    "services.people.7": "INSS denial analysis",
+    "services.people.8": "INSS administrative appeals",
+    "services.people.9": "Social security lawsuits",
+    "services.people.10": "Benefit reviews (when legally applicable)",
+    "services.people.11": "Benefit granting/maintenance requests",
+    "services.people.12": "Full administrative process follow-up",
+    "services.people.13": "Late contributions guidance",
+    "services.people.14": "Contribution planning (self-employed)",
+    "services.people.15": "Disability cases specialized service",
+    "services.people.16": "Survivor pension guidance",
+    "services.people.17": "Rural workers guidance",
+
+    "services.bizTitle": "For companies & professionals (Tax & Advisory)",
+    "services.biz.1": "Preventive tax diagnosis",
+    "services.biz.2": "Periodic fiscal check-up",
+    "services.biz.3": "Tax debt regularization",
+    "services.biz.4": "Installments and tax settlement",
+    "services.biz.5": "Defense in tax assessments",
+    "services.biz.6": "Administrative tax proceedings defense",
+    "services.biz.7": "Tax regime advisory",
+    "services.biz.8": "Lawful tax planning",
+    "services.biz.9": "Ongoing tax advisory (subscription)",
+    "services.biz.10": "Tax risks and contingencies",
+    "services.biz.11": "Basic ancillary obligations review",
+    "services.biz.12": "Support in inspections",
+    "services.biz.13": "Business structuring guidance",
+    "services.biz.14": "Advisory for professionals",
+    "services.biz.15": "Advisory for clinics and small businesses",
+    "services.biz.16": "Simple business contracts analysis",
+    "services.biz.17": "Internal practices review (liability prevention)",
+
+    "services.advTitle": "Advanced strategic services",
+    "services.adv.1": "Legal feasibility analysis",
+    "services.adv.2": "Strategic case study",
+    "services.adv.3": "Procedural strategy structuring",
+    "services.adv.4": "Technical legal opinions",
+    "services.adv.5": "Preventive legal planning",
+    "services.adv.6": "Documentation organization",
+    "services.adv.7": "Strategic follow-up in sensitive cases",
+
+    "services.acadTitle": "Academic/technical services",
+    "services.acad.1": "Technical review of legal texts",
+    "services.acad.2": "Methodological guidance for papers",
+    "services.acad.3": "Academic legal consulting",
+    "services.acad.4": "Support for legal opinions/articles",
+
+    "fees.title": "Fees (informational)",
+    "fees.text":
+      "Fees follow the OAB table and vary according to complexity, with a formal contract. We prioritize transparency and clear scope alignment before starting.",
+
     "care.howTitle": "How the service works",
-    "care.step1t": "1) Scheduling",
-    "care.step1p": "Service by prior appointment (in-person or online).",
-    "care.step2t": "2) Initial case review",
-    "care.step2p": "Information gathering and initial analysis to assess risks, feasibility, and next steps.",
-    "care.step3t": "3) Engagement",
-    "care.step3p": "Formal engagement agreement defining scope, timelines, and fees.",
-    "care.step4t": "4) Follow-up",
-    "care.step4p": "Strategic follow-up and clear communication on progress and required actions.",
+    "care.s1.t": "1) Scheduling",
+    "care.s1.p": "Service by prior appointment (in-person or online).",
+    "care.s2.t": "2) Initial case review",
+    "care.s2.p": "Gathering information and initial analysis to assess risks, feasibility, and next steps.",
+    "care.s3.t": "3) Engagement",
+    "care.s3.p": "Formal engagement agreement defining scope, timelines, and fees.",
+    "care.s4.t": "4) Follow-up",
+    "care.s4.p": "Strategic follow-up and clear communication on progress and required actions.",
     "care.onlineTitle": "Online Service",
     "care.onlineText": "Online legal service for all Brazil, with security and confidentiality.",
+    "care.ctaSchedule": "Scheduling",
+    "care.ctaWhats": "Professional WhatsApp",
+
+    "contact.lead": "Service by prior appointment.",
+    "contact.channels": "Contact channels",
+    "contact.phone": "Phone/WhatsApp",
+    "contact.email": "Email",
+    "contact.addr": "Address",
 
     "contents.lead": "Articles, legal updates, informational materials, and frequently asked questions.",
-    "contents.open": "Open",
-
     "articles.lead": "Educational and informational texts (examples).",
     "articles.1": "Who is eligible for BPC?",
     "articles.2": "Social security planning: who is it for?",
@@ -137,7 +450,7 @@ window.I18N = {
     "updates.1": "INSS biometric requirement",
     "updates.2": "New court interpretations",
     "updates.3": "Changes in social security rules",
-    "updates.4": "Installment plans and tax regularization programs",
+    "updates.4": "Installments and tax regularization programs",
 
     "materials.lead": "Space for PDFs (add files and links when ready).",
     "materials.1": "Retirement checklist (PDF)",
@@ -154,27 +467,66 @@ window.I18N = {
     "faq.q5": "If I have tax debt, can I open a company?",
     "faq.q6": "Can I pay tax debts in installments?",
 
+    "schedule.title": "Online Scheduling",
+    "schedule.lead": "Select an available day to request your appointment via WhatsApp (pre-filled message). Response times may vary.",
+    "schedule.pick": "Select an available day:",
+    "schedule.confirm": "Confirm on WhatsApp",
+    "schedule.note": "The calendar shows only available days. You can edit available days in js/calendar.js.",
+
     "footer.name": "Rejane Maria Barros Silva — OAB/MT 29.296",
     "footer.desc": "Professional practice guided by ethics, technical responsibility, and respect for OAB rules.",
+    "footer.disclaimerTitle": "Important notice",
+    "footer.disclaimerText": "Content is informational and does not constitute a promise of results.",
     "footer.disclaimer": "Content is informational and does not constitute a promise of results.",
     "footer.privacy": "Privacy Policy",
     "footer.terms": "Terms of Use",
     "footer.online": "Online legal service for all Brazil, with security and confidentiality.",
-    "footer.copy": "© {year} — All rights reserved.",
 
     "whats.float": "WhatsApp"
   },
 
+  // ===== ES =====
   es: {
     "brand.name": "REJANE MARIA BARROS SILVA",
+    "brand.nameFull": "Rejane Maria Barros Silva",
     "brand.subtitle": "Abogada — OAB/MT 29.296",
     "brand.chip1": "Máster en Economía (UFMT)",
     "brand.chip2": "Posgrado en Derecho Tributario y Previsional (ESA Nacional)",
 
+    "home.kicker": "Derecho Tributario y Previsional",
+    "home.meta1": "Abogada — OAB/MT 29.296",
+    "home.meta2": "Máster en Economía (UFMT)",
+    "home.meta3": "Posgrado en Derecho Tributario y Previsional (ESA Nacional)",
     "home.headline": "Derecho Tributario y Previsional",
     "home.tagline": "Actuación técnica y estratégica con foco en seguridad jurídica, análisis individualizado y soluciones responsables.",
+    "home.lead": "Actuación técnica y estratégica en Derecho Tributario y Derecho Previsional, con foco en seguridad jurídica, análisis individualizado y soluciones responsables.",
     "home.ctaSchedule": "Agendar Atención",
     "home.ctaWhats": "Hablar por WhatsApp",
+    "home.helpTitle": "Cómo puedo ayudarte",
+
+    "home.prevTitle": "Derecho Previsional",
+    "home.prev.1": "Planificación previsional",
+    "home.prev.2": "Jubilaciones",
+    "home.prev.3": "BPC/LOAS",
+    "home.prev.4": "Beneficio por incapacidad",
+    "home.prev.5": "Revisión de beneficios",
+    "home.prev.6": "Recursos administrativos en el INSS",
+    "home.prev.7": "Acciones judiciales contra denegaciones",
+
+    "home.tribTitle": "Derecho Tributario",
+    "home.trib.1": "Regularización de deudas fiscales",
+    "home.trib.2": "Planes de pago y transacción tributaria",
+    "home.trib.3": "Defensa en actas de infracción",
+    "home.trib.4": "Planificación tributaria lícita",
+    "home.trib.5": "Consultoría para empresas y profesionales",
+    "home.trib.6": "Recuperación de créditos (cuando proceda legalmente)",
+
+    "home.diffTitle": "Diferenciales profesionales",
+    "home.diff.1": "Atención técnica e individualizada",
+    "home.diff.2": "Actuación ética y responsable",
+    "home.diff.3": "Formación académica sólida",
+    "home.diff.4": "Análisis estratégico de riesgos y viabilidad",
+    "home.diff.5": "Claridad en la orientación jurídica",
 
     "nav.home": "Inicio",
     "nav.about": "Quién Soy",
@@ -189,21 +541,138 @@ window.I18N = {
     "nav.contact": "Contacto",
     "nav.schedule": "Agendamiento",
 
+    "about.p1":
+      "Soy abogada inscripta en la OAB/MT nº 29.296, con actuación en Derecho Tributario y Derecho Previsional. Soy Máster en Economía por UFMT y tengo posgrado en Derecho Tributario y Previsional por ESA Nacional.",
+    "about.trajTitle": "Trayectoria",
+    "about.trajText":
+      "Mi actuación está guiada por análisis técnico riguroso, responsabilidad ética y soluciones jurídicas sostenibles. He trabajado en el Tribunal de Justicia, Justicia Federal y en despacho, además de experiencia docente universitaria.",
+    "about.commitTitle": "Compromiso",
+    "about.commitText":
+      "Creo en una abogacía seria, estratégica y comprometida con la protección de los derechos, sin promesas de resultado y con orientación clara y responsable.",
+    "about.onlineTitle": "Atención Online",
+    "about.onlineText": "Atención jurídica online para todo Brasil, con seguridad y confidencialidad.",
+
+    "areas.lead": "Áreas de actuación con análisis detallado de cada caso.",
+    "areas.prevTitle": "Derecho Previsional",
+    "areas.prev.1": "Planificación previsional",
+    "areas.prev.2": "Jubilaciones",
+    "areas.prev.3": "Beneficio por incapacidad",
+    "areas.prev.4": "BPC/LOAS",
+    "areas.prev.5": "Revisiones de beneficios",
+    "areas.prev.6": "Recursos administrativos",
+    "areas.prev.7": "Acciones judiciales",
+
+    "areas.tribTitle": "Derecho Tributario",
+    "areas.trib.1": "Diagnóstico preventivo",
+    "areas.trib.2": "Regularización fiscal",
+    "areas.trib.3": "Defensa administrativa y judicial",
+    "areas.trib.4": "Planificación tributaria lícita",
+    "areas.trib.5": "Consultoría de régimen tributario",
+    "areas.trib.6": "Recuperación de créditos",
+
+    "strategy.title": "Actuación Estratégica",
+    "strategy.text":
+      "Trabajamos con análisis técnico profundo, sin promesas, priorizando soluciones sostenibles y estudio individualizado de cada caso.",
+
+    "partners.title": "Alianzas profesionales",
+    "partners.text": "Próximamente.",
+
+    "services.lead":
+      "Los servicios se prestan tras análisis individualizado del caso concreto, con actuación técnica, ética y responsable, respetando las normas de la OAB.",
+    "packages.title": "Paquetes profesionales",
+    "packages.tagPrev": "Previsional",
+    "packages.tagTrib": "Tributario",
+    "packages.tagSub": "Suscripción",
+
+    "packages.p1.title": "Planificación Previsional Esencial",
+    "packages.p1.text": "Evaluación inicial, organización documental y orientación objetiva.",
+    "packages.p2.title": "Planificación Previsional Estratégica",
+    "packages.p2.text": "Análisis de escenarios, estrategia completa, revisión de CNIS y plan contributivo si es necesario.",
+    "packages.p3.title": "Diagnóstico Tributario Preventivo",
+    "packages.p3.text": "Mapeo de riesgos y oportunidades con foco en prevención y regularidad.",
+    "packages.p4.title": "Consultoría Tributaria Empresarial",
+    "packages.p4.text": "Apoyo técnico continuo para empresas y profesionales.",
+    "packages.p5.title": "Acompañamiento Jurídico Mensual",
+    "packages.p5.text": "Modelo por suscripción para demandas consultivas y preventivas.",
+
+    "services.peopleTitle": "Para personas (Previsional y Consultivo)",
+    "services.people.1": "Consulta jurídica estructurada (presencial u online)",
+    "services.people.2": "Dictamen jurídico por escrito",
+    "services.people.3": "Segunda opinión en casos complejos",
+    "services.people.4": "Planificación previsional completa (escenarios y estrategia)",
+    "services.people.5": "Revisión de CNIS",
+    "services.people.6": "Auditoría y organización documental",
+    "services.people.7": "Análisis de denegaciones del INSS",
+    "services.people.8": "Recursos administrativos",
+    "services.people.9": "Acciones judiciales previsionales",
+    "services.people.10": "Revisión de beneficios (cuando proceda)",
+    "services.people.11": "Solicitud de concesión y mantenimiento",
+    "services.people.12": "Acompañamiento de procesos administrativos",
+    "services.people.13": "Orientación para aportes atrasados",
+    "services.people.14": "Plan contributivo (autónomos)",
+    "services.people.15": "Casos de incapacidad",
+    "services.people.16": "Pensión por fallecimiento",
+    "services.people.17": "Trabajadores rurales",
+
+    "services.bizTitle": "Para empresas y profesionales (Tributario y Consultoría)",
+    "services.biz.1": "Diagnóstico preventivo",
+    "services.biz.2": "Check-up fiscal periódico",
+    "services.biz.3": "Regularización de deudas",
+    "services.biz.4": "Planes de pago y transacción",
+    "services.biz.5": "Defensa en actas de infracción",
+    "services.biz.6": "Defensa en procesos administrativos",
+    "services.biz.7": "Elección de régimen tributario",
+    "services.biz.8": "Planificación lícita",
+    "services.biz.9": "Consultoría continua (suscripción)",
+    "services.biz.10": "Riesgos y contingencias fiscales",
+    "services.biz.11": "Revisión básica de obligaciones",
+    "services.biz.12": "Apoyo en fiscalizaciones",
+    "services.biz.13": "Estructuración de negocios",
+    "services.biz.14": "Asesoría para profesionales",
+    "services.biz.15": "Clínicas y pequeños negocios",
+    "services.biz.16": "Contratos simples",
+    "services.biz.17": "Prevención de pasivos",
+
+    "services.advTitle": "Servicios estratégicos avanzados",
+    "services.adv.1": "Análisis de viabilidad",
+    "services.adv.2": "Estudio estratégico de caso",
+    "services.adv.3": "Estrategia procesal",
+    "services.adv.4": "Dictámenes técnicos",
+    "services.adv.5": "Planificación preventiva",
+    "services.adv.6": "Organización documental",
+    "services.adv.7": "Seguimiento estratégico",
+
+    "services.acadTitle": "Servicios académicos/técnicos",
+    "services.acad.1": "Revisión técnica de textos jurídicos",
+    "services.acad.2": "Orientación metodológica",
+    "services.acad.3": "Consultoría académica",
+    "services.acad.4": "Apoyo para dictámenes y artículos",
+
+    "fees.title": "Honorarios (orientativo)",
+    "fees.text":
+      "Los honorarios siguen la tabla de la OAB y varían según la complejidad, con contrato formal. Priorizamos transparencia y alcance claro antes de iniciar.",
+
     "care.howTitle": "Cómo funciona la atención",
-    "care.step1t": "1) Agendamiento",
-    "care.step1p": "Atención con cita previa (presencial u online).",
-    "care.step2t": "2) Primera revisión del caso",
-    "care.step2p": "Recolección de información y análisis inicial para evaluar riesgos, viabilidad y próximos pasos.",
-    "care.step3t": "3) Contratación",
-    "care.step3p": "Contrato formal definiendo alcance, plazos y honorarios.",
-    "care.step4t": "4) Acompañamiento",
-    "care.step4p": "Seguimiento estratégico y comunicación clara sobre avances y acciones necesarias.",
+    "care.s1.t": "1) Agendamiento",
+    "care.s1.p": "Atención con cita previa (presencial u online).",
+    "care.s2.t": "2) Primera revisión del caso",
+    "care.s2.p": "Recolección de información y análisis inicial para evaluar riesgos y próximos pasos.",
+    "care.s3.t": "3) Contratación",
+    "care.s3.p": "Contrato formal definiendo alcance, plazos y honorarios.",
+    "care.s4.t": "4) Acompañamiento",
+    "care.s4.p": "Seguimiento estratégico y comunicación clara.",
     "care.onlineTitle": "Atención Online",
     "care.onlineText": "Atención jurídica online para todo Brasil, con seguridad y confidencialidad.",
+    "care.ctaSchedule": "Agendamiento",
+    "care.ctaWhats": "WhatsApp Profesional",
+
+    "contact.lead": "Atención con cita previa.",
+    "contact.channels": "Canales de contacto",
+    "contact.phone": "Teléfono/WhatsApp",
+    "contact.email": "E-mail",
+    "contact.addr": "Dirección",
 
     "contents.lead": "Artículos, actualizaciones jurídicas, materiales informativos y preguntas frecuentes.",
-    "contents.open": "Abrir",
-
     "articles.lead": "Textos educativos e informativos (ejemplos).",
     "articles.1": "¿Quién tiene derecho al BPC?",
     "articles.2": "Planificación previsional: ¿para quién es?",
@@ -223,7 +692,7 @@ window.I18N = {
     "materials.4": "Guía básica de regularización fiscal (PDF)",
     "materials.5": "Derechos básicos del asegurado (PDF)",
 
-    "faq.lead": "Preguntas frecuentes (FAQ).",
+    "faq.lead": "Preguntas Frecuentes (FAQ).",
     "faq.q1": "¿Quién tiene derecho al BPC/LOAS?",
     "faq.q2": "¿Cuánto tarda un proceso previsional?",
     "faq.q3": "¿Puedo jubilarme con aportes atrasados?",
@@ -231,13 +700,20 @@ window.I18N = {
     "faq.q5": "Tengo deuda tributaria, ¿puedo abrir empresa?",
     "faq.q6": "¿Puedo parcelar deudas fiscales?",
 
+    "schedule.title": "Agendamiento Online",
+    "schedule.lead": "Seleccione un día disponible para solicitar su atención por WhatsApp (mensaje listo). Los plazos pueden variar.",
+    "schedule.pick": "Seleccione un día disponible:",
+    "schedule.confirm": "Confirmar en WhatsApp",
+    "schedule.note": "El calendario muestra solo días disponibles. Puede editar los días en js/calendar.js.",
+
     "footer.name": "Rejane Maria Barros Silva — OAB/MT 29.296",
     "footer.desc": "Actuación profesional basada en ética, responsabilidad técnica y respeto a las normas de la OAB.",
+    "footer.disclaimerTitle": "Aviso importante",
+    "footer.disclaimerText": "Los contenidos son informativos y no constituyen promesa de resultado.",
     "footer.disclaimer": "Los contenidos son informativos y no constituyen promesa de resultado.",
     "footer.privacy": "Política de Privacidad",
     "footer.terms": "Términos de Uso",
     "footer.online": "Atención jurídica online para todo Brasil, con seguridad y confidencialidad.",
-    "footer.copy": "© {year} — Todos los derechos reservados.",
 
     "whats.float": "WhatsApp"
   }
