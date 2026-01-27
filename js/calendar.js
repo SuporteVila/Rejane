@@ -10,7 +10,6 @@ window.AVAILABLE_DATES = [
   "2026-02-25"
 ];
 
-// helpers
 window.CalendarHelpers = {
   toISODate(d){
     const y = d.getFullYear();
