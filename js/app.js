@@ -5,7 +5,6 @@
   const phoneDisplay = "(65) 99996-4842";
   const email = "rejanesilva.advocacia@hotmail.com";
   const address = "Av. Desembargador J.P.F. Mendes, nº 544, Centro, Diamantino-MT";
-
   const oab = "OAB/MT 29.296";
 
   // ===== ELEMENTOS =====
@@ -13,7 +12,7 @@
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // ===== IDIOMAS (usa botões PT/EN/ES do index) =====
+  // ===== IDIOMAS =====
   const LANG_KEY = "rs_lang";
   let currentLang = localStorage.getItem(LANG_KEY) || "pt";
 
@@ -28,7 +27,6 @@
       el.textContent = t(key);
     });
 
-    // footer copy with {year}
     const footerCopy = document.querySelector('[data-i18n="footer.copy"]');
     if (footerCopy) footerCopy.innerHTML = t("footer.copy").replace("{year}", String(new Date().getFullYear()));
 
@@ -47,8 +45,8 @@
       localStorage.setItem(LANG_KEY, currentLang);
       setActiveLangBtn();
       applyI18n(document);
+      configureWhatsAppLinks();
       renderRoute();
-      configureWhatsAppFloat();
     });
   });
 
@@ -57,9 +55,7 @@
 
   // ===== WHATSAPP =====
   function encodeWhats(text) { return encodeURIComponent(text); }
-  function whatsappLink(message) {
-    return `https://wa.me/${phoneE164}?text=${encodeWhats(message)}`;
-  }
+  function whatsappLink(message) { return `https://wa.me/${phoneE164}?text=${encodeWhats(message)}`; }
 
   function baseWhatsMessage() {
     if (currentLang === "en") return "Hello! I would like to schedule a consultation. Could you please share the available times?";
@@ -67,93 +63,126 @@
     return "Olá! Gostaria de agendar um atendimento. Pode me informar os horários disponíveis?";
   }
 
-  function configureWhatsAppFloat() {
-    const a = document.getElementById("whatsFloat");
-    if (!a) return;
-    a.href = whatsappLink(baseWhatsMessage());
-  }
-  configureWhatsAppFloat();
+  function configureWhatsAppLinks() {
+    const floatBtn = document.getElementById("whatsFloat");
+    if (floatBtn) floatBtn.href = whatsappLink(baseWhatsMessage());
 
-  // ===== HELPERS UI =====
-  function badge(text) {
-    return `<span class="badge">${text}</span>`;
+    const heroWhats = document.getElementById("heroWhats");
+    if (heroWhats) heroWhats.href = whatsappLink(baseWhatsMessage());
+  }
+  configureWhatsAppLinks();
+
+  // ===== DROPDOWN "CONTEÚDOS" =====
+  const btnConteudos = document.getElementById("btnConteudos");
+  const menuConteudos = document.getElementById("menuConteudos");
+
+  function closeDropdown() {
+    if (!menuConteudos) return;
+    menuConteudos.setAttribute("aria-hidden", "true");
+    menuConteudos.classList.remove("is-open");
+  }
+  function toggleDropdown() {
+    if (!menuConteudos) return;
+    const hidden = menuConteudos.getAttribute("aria-hidden") === "true";
+    if (hidden) {
+      menuConteudos.setAttribute("aria-hidden", "false");
+      menuConteudos.classList.add("is-open");
+    } else {
+      closeDropdown();
+    }
   }
 
+  if (btnConteudos && menuConteudos) {
+    btnConteudos.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleDropdown();
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!menuConteudos.classList.contains("is-open")) return;
+      const clickedInside = menuConteudos.contains(e.target) || btnConteudos.contains(e.target);
+      if (!clickedInside) closeDropdown();
+    });
+
+    menuConteudos.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", () => closeDropdown());
+    });
+  }
+
+  // ===== HELPERS HTML =====
   function ul(items) {
     return `<ul class="list">${items.map(i => `<li>${i}</li>`).join("")}</ul>`;
   }
 
-  // ===== PÁGINAS =====
+  function divider() { return `<div class="divider"></div>`; }
 
-  // HOME / INÍCIO
-  function pageHome() {
+  // ===== PÁGINAS =====
+  function pageInicio() {
     return `
       <div class="section">
-        <h3 class="section__title">Início</h3>
+        <h3 class="section__title">${t("nav.home")}</h3>
 
         <div class="heroCard">
-          <div class="heroCard__kicker">${badge("Advocacia Tributária e Previdenciária")}</div>
-          <h4 class="heroCard__name">Rejane Maria Barros Silva</h4>
+          <div class="heroCard__kicker"><span class="badge">${t("home.kicker")}</span></div>
+          <h4 class="heroCard__name">${t("brand.nameFull")}</h4>
           <div class="heroCard__meta">
-            <span>Advogada — ${oab}</span>
+            <span>${t("home.meta1")}</span>
             <span>•</span>
-            <span>Mestre em Economia (UFMT)</span>
+            <span>${t("home.meta2")}</span>
             <span>•</span>
-            <span>Pós-graduada em Direito Tributário e Previdenciário (ESA Nacional)</span>
+            <span>${t("home.meta3")}</span>
           </div>
 
-          <p class="heroCard__lead">
-            Atuação técnica e estratégica em Direito Tributário e Direito Previdenciário, com foco em
-            segurança jurídica, análise individualizada e soluções responsáveis.
-          </p>
+          <p class="heroCard__lead">${t("home.lead")}</p>
 
           <div class="heroCard__cta">
-            <a class="btn btn--gold" href="#/agendamento">Agendar Atendimento</a>
-            <a class="btn btn--ghost" href="${whatsappLink(baseWhatsMessage())}" target="_blank" rel="noopener">Falar no WhatsApp</a>
+            <a class="btn btn--gold" href="#/agendamento">${t("home.ctaSchedule")}</a>
+            <a class="btn btn--ghost" href="${whatsappLink(baseWhatsMessage())}" target="_blank" rel="noopener">${t("home.ctaWhats")}</a>
           </div>
         </div>
 
-        <div class="divider"></div>
+        ${divider()}
 
-        <h4 class="section__subtitle">Como posso te ajudar</h4>
+        <h4 class="section__subtitle">${t("home.helpTitle")}</h4>
         <div class="grid grid--2">
           <div class="card">
-            <h4 class="card__title">Direito Previdenciário</h4>
+            <h4 class="card__title">${t("home.prevTitle")}</h4>
             ${ul([
-              "Planejamento previdenciário",
-              "Aposentadorias",
-              "BPC/LOAS",
-              "Auxílio por incapacidade",
-              "Revisão de benefícios",
-              "Recursos administrativos no INSS",
-              "Ações judiciais contra indeferimentos"
+              t("home.prev.1"),
+              t("home.prev.2"),
+              t("home.prev.3"),
+              t("home.prev.4"),
+              t("home.prev.5"),
+              t("home.prev.6"),
+              t("home.prev.7")
             ])}
           </div>
 
           <div class="card">
-            <h4 class="card__title">Direito Tributário</h4>
+            <h4 class="card__title">${t("home.tribTitle")}</h4>
             ${ul([
-              "Regularização de débitos fiscais",
-              "Parcelamentos e transação tributária",
-              "Defesa em autos de infração",
-              "Planejamento tributário lícito",
-              "Consultoria para empresas e profissionais liberais",
-              "Recuperação de créditos tributários (quando juridicamente cabível)"
+              t("home.trib.1"),
+              t("home.trib.2"),
+              t("home.trib.3"),
+              t("home.trib.4"),
+              t("home.trib.5"),
+              t("home.trib.6")
             ])}
           </div>
         </div>
 
-        <div class="divider"></div>
+        ${divider()}
 
-        <h4 class="section__subtitle">Diferenciais profissionais</h4>
+        <h4 class="section__subtitle">${t("home.diffTitle")}</h4>
         <div class="grid">
           <div class="card">
             ${ul([
-              "Atendimento técnico e individualizado",
-              "Atuação ética e responsável",
-              "Formação acadêmica sólida",
-              "Análise estratégica de riscos e viabilidade",
-              "Clareza na orientação jurídica"
+              t("home.diff.1"),
+              t("home.diff.2"),
+              t("home.diff.3"),
+              t("home.diff.4"),
+              t("home.diff.5")
             ])}
           </div>
         </div>
@@ -161,293 +190,198 @@
     `;
   }
 
-  // QUEM SOU
   function pageQuemSou() {
     return `
       <div class="section">
-        <h3 class="section__title">Quem Sou</h3>
+        <h3 class="section__title">${t("nav.about")}</h3>
 
         <p class="section__lead" style="max-width:980px;">
-          Sou advogada regularmente inscrita na OAB/MT sob o nº 29.296, com atuação nas áreas de
-          Direito Tributário e Direito Previdenciário.
-          Sou Mestre em Economia pela Universidade Federal de Mato Grosso (UFMT) e possuo
-          pós-graduação em Direito Tributário e Direito Previdenciário pela Escola Superior de Advocacia Nacional.
+          ${t("about.p1")}
         </p>
 
         <div class="grid grid--2">
           <div class="card">
-            <h4 class="card__title">Trajetória</h4>
-            <p class="card__text">
-              Minha atuação profissional é pautada pela análise técnica rigorosa, responsabilidade ética e
-              busca por soluções jurídicas sustentáveis. Ao longo da minha trajetória, atuei no Tribunal de Justiça,
-              Justiça Federal e em escritório de advocacia, além de ter experiência em docência universitária.
-            </p>
+            <h4 class="card__title">${t("about.trajTitle")}</h4>
+            <p class="card__text">${t("about.trajText")}</p>
           </div>
           <div class="card">
-            <h4 class="card__title">Compromisso</h4>
-            <p class="card__text">
-              Acredito em uma advocacia séria, estratégica e comprometida com a proteção dos direitos dos clientes,
-              sem promessas de resultado e com orientação clara e responsável.
-            </p>
+            <h4 class="card__title">${t("about.commitTitle")}</h4>
+            <p class="card__text">${t("about.commitText")}</p>
           </div>
         </div>
 
-        <div class="divider"></div>
+        ${divider()}
 
         <div class="grid">
           <div class="card">
-            <h4 class="card__title">Atendimento Online</h4>
-            <p class="card__text">Atendimento jurídico online para todo o Brasil, com segurança e sigilo.</p>
+            <h4 class="card__title">${t("about.onlineTitle")}</h4>
+            <p class="card__text">${t("about.onlineText")}</p>
           </div>
         </div>
       </div>
     `;
   }
 
-  // ÁREAS DE ATUAÇÃO
   function pageAtuacao() {
     return `
       <div class="section">
-        <h3 class="section__title">Atuação</h3>
-        <p class="section__lead">Áreas de atuação com análise detalhada de cada caso.</p>
+        <h3 class="section__title">${t("nav.areas")}</h3>
+        <p class="section__lead">${t("areas.lead")}</p>
 
         <div class="grid grid--2">
           <div class="card">
-            <h4 class="card__title">Direito Previdenciário</h4>
+            <h4 class="card__title">${t("areas.prevTitle")}</h4>
             ${ul([
-              "Planejamento previdenciário",
-              "Aposentadorias",
-              "Benefício por incapacidade",
-              "BPC/LOAS",
-              "Revisões de benefícios",
-              "Recursos administrativos",
-              "Ações judiciais"
+              t("areas.prev.1"),
+              t("areas.prev.2"),
+              t("areas.prev.3"),
+              t("areas.prev.4"),
+              t("areas.prev.5"),
+              t("areas.prev.6"),
+              t("areas.prev.7")
             ])}
           </div>
 
           <div class="card">
-            <h4 class="card__title">Direito Tributário</h4>
+            <h4 class="card__title">${t("areas.tribTitle")}</h4>
             ${ul([
-              "Diagnóstico tributário preventivo",
-              "Regularização fiscal",
-              "Defesa administrativa e judicial",
-              "Planejamento tributário lícito",
-              "Consultoria para escolha de regime tributário",
-              "Recuperação de créditos"
+              t("areas.trib.1"),
+              t("areas.trib.2"),
+              t("areas.trib.3"),
+              t("areas.trib.4"),
+              t("areas.trib.5"),
+              t("areas.trib.6")
             ])}
           </div>
         </div>
 
-        <div class="divider"></div>
+        ${divider()}
 
         <div class="grid">
           <div class="card">
-            <h4 class="card__title">Atuação Estratégica</h4>
-            <p class="card__text">
-              O escritório trabalha com análise técnica profunda, sem promessas, priorizando soluções sustentáveis
-              e estudo individualizado de cada caso.
-            </p>
+            <h4 class="card__title">${t("strategy.title")}</h4>
+            <p class="card__text">${t("strategy.text")}</p>
           </div>
 
           <div class="card">
-            <h4 class="card__title">Parcerias profissionais</h4>
-            <p class="card__text">Em breve.</p>
+            <h4 class="card__title">${t("partners.title")}</h4>
+            <p class="card__text">${t("partners.text")}</p>
           </div>
         </div>
       </div>
     `;
   }
 
-  // SERVIÇOS (com pacotes)
   function pageServicos() {
     return `
       <div class="section">
-        <h3 class="section__title">Serviços</h3>
+        <h3 class="section__title">${t("nav.services")}</h3>
+        <p class="section__lead" style="max-width:980px;">${t("services.lead")}</p>
 
-        <p class="section__lead" style="max-width:980px;">
-          Os serviços abaixo são prestados mediante análise individualizada do caso concreto, com atuação técnica, ética e responsável,
-          observando-se as normas do Código de Ética e Disciplina da OAB.
-        </p>
-
-        <h4 class="section__subtitle">Pacotes profissionais</h4>
+        <h4 class="section__subtitle">${t("packages.title")}</h4>
         <div class="grid grid--2">
           <div class="card">
-            ${badge("Previdenciário")}
-            <h4 class="card__title" style="margin-top:10px;">Planejamento Previdenciário Essencial</h4>
-            <p class="card__text">Análise inicial, organização documental e orientação objetiva para o melhor caminho previdenciário.</p>
+            <span class="badge">${t("packages.tagPrev")}</span>
+            <h4 class="card__title" style="margin-top:10px;">${t("packages.p1.title")}</h4>
+            <p class="card__text">${t("packages.p1.text")}</p>
           </div>
           <div class="card">
-            ${badge("Previdenciário")}
-            <h4 class="card__title" style="margin-top:10px;">Planejamento Previdenciário Estratégico</h4>
-            <p class="card__text">Análise de cenários, estratégia completa, revisão de CNIS/vínculos e plano contributivo quando necessário.</p>
-          </div>
-
-          <div class="card">
-            ${badge("Tributário")}
-            <h4 class="card__title" style="margin-top:10px;">Diagnóstico Tributário Preventivo</h4>
-            <p class="card__text">Mapeamento de riscos e oportunidades com foco em prevenção e regularidade fiscal.</p>
+            <span class="badge">${t("packages.tagPrev")}</span>
+            <h4 class="card__title" style="margin-top:10px;">${t("packages.p2.title")}</h4>
+            <p class="card__text">${t("packages.p2.text")}</p>
           </div>
           <div class="card">
-            ${badge("Tributário")}
-            <h4 class="card__title" style="margin-top:10px;">Consultoria Tributária Empresarial</h4>
-            <p class="card__text">Apoio técnico contínuo para empresas e profissionais liberais, com orientação prática e segurança jurídica.</p>
+            <span class="badge">${t("packages.tagTrib")}</span>
+            <h4 class="card__title" style="margin-top:10px;">${t("packages.p3.title")}</h4>
+            <p class="card__text">${t("packages.p3.text")}</p>
           </div>
-
           <div class="card">
-            ${badge("Assinatura")}
-            <h4 class="card__title" style="margin-top:10px;">Acompanhamento Jurídico Mensal</h4>
-            <p class="card__text">Modelo de acompanhamento por assinatura para demandas consultivas e preventivas.</p>
+            <span class="badge">${t("packages.tagTrib")}</span>
+            <h4 class="card__title" style="margin-top:10px;">${t("packages.p4.title")}</h4>
+            <p class="card__text">${t("packages.p4.text")}</p>
+          </div>
+          <div class="card">
+            <span class="badge">${t("packages.tagSub")}</span>
+            <h4 class="card__title" style="margin-top:10px;">${t("packages.p5.title")}</h4>
+            <p class="card__text">${t("packages.p5.text")}</p>
           </div>
         </div>
 
-        <div class="divider"></div>
+        ${divider()}
 
-        <h4 class="section__subtitle">Para pessoas físicas (Previdenciário e Consultivo)</h4>
-        <div class="grid">
+        <h4 class="section__subtitle">${t("services.peopleTitle")}</h4>
+n        <div class="grid">
           <div class="card">
             ${ul([
-              "Consulta jurídica estruturada (presencial ou online)",
-              "Parecer jurídico individualizado por escrito",
-              "Segunda opinião jurídica em casos complexos",
-              "Planejamento previdenciário completo (análise de cenários e estratégia)",
-              "Revisão técnica de CNIS e vínculos contributivos",
-              "Organização e auditoria documental previdenciária",
-              "Análise de indeferimentos do INSS",
-              "Recursos administrativos no INSS",
-              "Ações judiciais previdenciárias",
-              "Revisão de benefícios (quando juridicamente cabível)",
-              "Pedido de concessão e manutenção de benefícios",
-              "Acompanhamento integral de processos administrativos",
-              "Orientação para contribuições em atraso e regularização contributiva",
-              "Planejamento contributivo para autônomos e contribuintes individuais",
-              "Atendimento especializado para casos de incapacidade",
-              "Orientação jurídica em casos de pensão por morte",
-              "Assessoria para segurados especiais e trabalhadores rurais"
+              t("services.people.1"), t("services.people.2"), t("services.people.3"), t("services.people.4"),
+              t("services.people.5"), t("services.people.6"), t("services.people.7"), t("services.people.8"),
+              t("services.people.9"), t("services.people.10"), t("services.people.11"), t("services.people.12"),
+              t("services.people.13"), t("services.people.14"), t("services.people.15"), t("services.people.16"),
+              t("services.people.17"), t("services.people.18")
             ])}
           </div>
         </div>
 
-        <div class="divider"></div>
+        ${divider()}
 
-        <h4 class="section__subtitle">Para empresas e profissionais liberais (Tributário e Consultoria)</h4>
+        <h4 class="section__subtitle">${t("services.bizTitle")}</h4>
         <div class="grid">
           <div class="card">
             ${ul([
-              "Diagnóstico tributário preventivo",
-              "Check-up fiscal periódico",
-              "Regularização de débitos fiscais",
-              "Parcelamentos e transação tributária",
-              "Defesa em autos de infração",
-              "Defesa em processos administrativos fiscais",
-              "Consultoria para escolha de regime tributário",
-              "Planejamento tributário lícito",
-              "Consultoria tributária contínua (modelo assinatura)",
-              "Análise de riscos fiscais e contingências",
-              "Revisão básica de obrigações acessórias",
-              "Apoio jurídico em fiscalizações",
-              "Orientação para abertura e estruturação de negócios",
-              "Assessoria jurídica para profissionais liberais",
-              "Consultoria para clínicas, pequenos negócios e prestadores de serviço",
-              "Análise jurídica de contratos empresariais simples",
-              "Revisão de práticas internas com foco em prevenção de passivos"
+              t("services.biz.1"), t("services.biz.2"), t("services.biz.3"), t("services.biz.4"),
+              t("services.biz.5"), t("services.biz.6"), t("services.biz.7"), t("services.biz.8"),
+              t("services.biz.9"), t("services.biz.10"), t("services.biz.11"), t("services.biz.12"),
+              t("services.biz.13"), t("services.biz.14"), t("services.biz.15"), t("services.biz.16"),
+              t("services.biz.17"), t("services.biz.18")
             ])}
           </div>
         </div>
 
-        <div class="divider"></div>
+        ${divider()}
 
-        <h4 class="section__subtitle">Serviços estratégicos e consultivos avançados</h4>
+        <h4 class="section__subtitle">${t("fees.title")}</h4>
         <div class="grid">
-          <div class="card">
-            ${ul([
-              "Análise de viabilidade jurídica de demandas",
-              "Estudo estratégico de caso (preventivo ou contencioso)",
-              "Estruturação de estratégia processual",
-              "Elaboração de pareceres técnicos fundamentados",
-              "Planejamento jurídico preventivo",
-              "Organização jurídica de documentação para processos",
-              "Acompanhamento jurídico estratégico de casos sensíveis"
-            ])}
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <h4 class="section__subtitle">Serviços acadêmicos e técnicos complementares</h4>
-        <div class="grid">
-          <div class="card">
-            ${ul([
-              "Revisão técnica de textos jurídicos",
-              "Orientação metodológica para artigos, TCC e pós-graduação",
-              "Consultoria acadêmica jurídica",
-              "Apoio técnico para elaboração de pareceres e artigos jurídicos"
-            ])}
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <h4 class="section__subtitle">Honorários (orientativo)</h4>
-        <div class="grid">
-          <div class="card">
-            <p class="card__text">
-              Os honorários seguem a tabela da OAB e variam conforme a complexidade do caso, com contrato formal.
-              Prezamos por transparência e alinhamento claro do escopo antes do início do trabalho.
-            </p>
-          </div>
+          <div class="card"><p class="card__text">${t("fees.text")}</p></div>
         </div>
       </div>
     `;
   }
 
-  // ATENDIMENTO (como funciona + online)
   function pageAtendimento() {
     return `
       <div class="section">
-        <h3 class="section__title">Atendimento</h3>
+        <h3 class="section__title">${t("nav.care")}</h3>
 
-        <h4 class="section__subtitle">Como funciona o atendimento</h4>
+        <h4 class="section__subtitle">${t("care.howTitle")}</h4>
         <div class="grid grid--2">
-          <div class="card">
-            <h4 class="card__title">1) Agendamento</h4>
-            <p class="card__text">Atendimento mediante agendamento prévio (presencial ou online).</p>
-          </div>
-          <div class="card">
-            <h4 class="card__title">2) Primeira análise do caso</h4>
-            <p class="card__text">Coleta de informações e análise inicial para compreender riscos, viabilidade e próximos passos.</p>
-          </div>
-          <div class="card">
-            <h4 class="card__title">3) Forma de contratação</h4>
-            <p class="card__text">Contratação formal por instrumento adequado, definindo escopo, prazos e honorários.</p>
-          </div>
-          <div class="card">
-            <h4 class="card__title">4) Acompanhamento</h4>
-            <p class="card__text">Acompanhamento estratégico e comunicação objetiva sobre evolução e providências.</p>
-          </div>
+          <div class="card"><h4 class="card__title">${t("care.s1.t")}</h4><p class="card__text">${t("care.s1.p")}</p></div>
+          <div class="card"><h4 class="card__title">${t("care.s2.t")}</h4><p class="card__text">${t("care.s2.p")}</p></div>
+          <div class="card"><h4 class="card__title">${t("care.s3.t")}</h4><p class="card__text">${t("care.s3.p")}</p></div>
+          <div class="card"><h4 class="card__title">${t("care.s4.t")}</h4><p class="card__text">${t("care.s4.p")}</p></div>
         </div>
 
-        <div class="divider"></div>
+        ${divider()}
 
         <div class="grid">
           <div class="card">
-            <h4 class="card__title">Atendimento Online</h4>
-            <p class="card__text">Atendimento jurídico online para todo o Brasil, com segurança e sigilo.</p>
+            <h4 class="card__title">${t("care.onlineTitle")}</h4>
+            <p class="card__text">${t("care.onlineText")}</p>
           </div>
         </div>
 
-        <div class="divider"></div>
+        ${divider()}
 
         <div class="grid">
           <div class="card">
-            <h4 class="card__title">Canais de contato</h4>
+            <h4 class="card__title">${t("contact.channels")}</h4>
             <div class="contact">
-              <a href="tel:+${phoneE164}"><strong>Telefone:</strong><span>${phoneDisplay}</span></a>
-              <a href="mailto:${email}"><strong>E-mail:</strong><span>${email}</span></a>
-              <span><strong>Endereço:</strong><span>${address}</span></span>
+              <a href="tel:+${phoneE164}"><strong>${t("contact.phone")}:</strong><span>${phoneDisplay}</span></a>
+              <a href="mailto:${email}"><strong>${t("contact.email")}:</strong><span>${email}</span></a>
+              <span><strong>${t("contact.addr")}:</strong><span>${address}</span></span>
             </div>
             <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;">
-              <a class="btn btn--gold" href="#/agendamento">Agendar Atendimento</a>
-              <a class="btn btn--ghost" href="${whatsappLink(baseWhatsMessage())}" target="_blank" rel="noopener">WhatsApp Profissional</a>
+              <a class="btn btn--gold" href="#/agendamento">${t("nav.schedule")}</a>
+              <a class="btn btn--ghost" href="${whatsappLink(baseWhatsMessage())}" target="_blank" rel="noopener">${t("home.ctaWhats")}</a>
             </div>
           </div>
         </div>
@@ -455,99 +389,116 @@
     `;
   }
 
-  // CONTEÚDOS (Artigos + Atualizações + Materiais + FAQ)
-  function pageConteudos() {
+  // Conteúdos (Hub) + páginas separadas
+  function pageConteudosHub() {
     return `
       <div class="section">
-        <h3 class="section__title">Conteúdos</h3>
-        <p class="section__lead">Artigos, atualizações jurídicas, materiais informativos e perguntas frequentes.</p>
+        <h3 class="section__title">${t("nav.contents")}</h3>
+        <p class="section__lead">${t("contents.lead")}</p>
 
         <div class="grid grid--2">
           <div class="card">
-            <h4 class="card__title">Artigos e conteúdos</h4>
-            ${ul([
-              "Quem tem direito ao BPC?",
-              "Planejamento previdenciário: para quem é indicado?",
-              "MEI e aposentadoria: o que observar",
-              "Débitos tributários: quando é possível regularizar"
-            ])}
-            <p class="card__text" style="margin-top:10px;">(Você pode substituir por links reais quando publicar.)</p>
+            <h4 class="card__title">${t("nav.articles")}</h4>
+            ${ul([t("articles.1"), t("articles.2"), t("articles.3"), t("articles.4")])}
+            <div style="margin-top:12px"><a class="btn btn--ghost" href="#/artigos">${t("contents.open")}</a></div>
           </div>
-
           <div class="card">
-            <h4 class="card__title">Atualizações jurídicas</h4>
-            ${ul([
-              "Exigência de biometria pelo INSS",
-              "Novos entendimentos dos tribunais",
-              "Alterações em regras previdenciárias",
-              "Parcelamentos e programas de regularização fiscal"
-            ])}
-            <p class="card__text" style="margin-top:10px;">(Você pode substituir por links reais quando publicar.)</p>
+            <h4 class="card__title">${t("nav.updates")}</h4>
+            ${ul([t("updates.1"), t("updates.2"), t("updates.3"), t("updates.4")])}
+            <div style="margin-top:12px"><a class="btn btn--ghost" href="#/atualizacoes">${t("contents.open")}</a></div>
           </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="grid grid--2">
           <div class="card">
-            <h4 class="card__title">Materiais informativos (PDF)</h4>
-            <p class="card__text">Espaço para PDFs. Quando você tiver os arquivos, eu te ajudo a ligar os links.</p>
-            ${ul([
-              "Checklist para aposentadoria (PDF)",
-              "Guia de documentos para BPC (PDF)",
-              "Como usar o Meu INSS (PDF)",
-              "Guia básico de regularização fiscal (PDF)",
-              "Direitos básicos do segurado (PDF)"
-            ])}
+            <h4 class="card__title">${t("nav.materials")}</h4>
+            ${ul([t("materials.1"), t("materials.2"), t("materials.3"), t("materials.4"), t("materials.5")])}
+            <div style="margin-top:12px"><a class="btn btn--ghost" href="#/materiais">${t("contents.open")}</a></div>
           </div>
-
           <div class="card">
-            <h4 class="card__title">Perguntas Frequentes (FAQ)</h4>
-            ${ul([
-              "Quem tem direito ao BPC/LOAS?",
-              "Quanto tempo demora um processo previdenciário?",
-              "Posso me aposentar mesmo com contribuições em atraso?",
-              "Quem pode revisar aposentadoria?",
-              "Tenho dívida tributária, posso abrir empresa?",
-              "Posso parcelar débitos fiscais?"
-            ])}
+            <h4 class="card__title">${t("nav.faq")}</h4>
+            ${ul([t("faq.1"), t("faq.2"), t("faq.3"), t("faq.4"), t("faq.5"), t("faq.6")])}
+            <div style="margin-top:12px"><a class="btn btn--ghost" href="#/faq">${t("contents.open")}</a></div>
           </div>
         </div>
       </div>
     `;
   }
 
-  // CONTATO
+  function pageArtigos() {
+    return `
+      <div class="section">
+        <h3 class="section__title">${t("nav.articles")}</h3>
+        <p class="section__lead">${t("articles.lead")}</p>
+        <div class="grid">
+          <div class="card">${ul([t("articles.1"), t("articles.2"), t("articles.3"), t("articles.4")])}</div>
+        </div>
+      </div>
+    `;
+  }
+
+  function pageAtualizacoes() {
+    return `
+      <div class="section">
+        <h3 class="section__title">${t("nav.updates")}</h3>
+        <p class="section__lead">${t("updates.lead")}</p>
+        <div class="grid">
+          <div class="card">${ul([t("updates.1"), t("updates.2"), t("updates.3"), t("updates.4")])}</div>
+        </div>
+      </div>
+    `;
+  }
+
+  function pageMateriais() {
+    return `
+      <div class="section">
+        <h3 class="section__title">${t("nav.materials")}</h3>
+        <p class="section__lead">${t("materials.lead")}</p>
+        <div class="grid">
+          <div class="card">
+            <p class="card__text">${t("materials.hint")}</p>
+            ${ul([t("materials.1"), t("materials.2"), t("materials.3"), t("materials.4"), t("materials.5")])}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function pageFAQ() {
+    return `
+      <div class="section">
+        <h3 class="section__title">${t("nav.faq")}</h3>
+        <p class="section__lead">${t("faq.lead")}</p>
+        <div class="grid">
+          <div class="card">${ul([t("faq.1"), t("faq.2"), t("faq.3"), t("faq.4"), t("faq.5"), t("faq.6")])}</div>
+        </div>
+      </div>
+    `;
+  }
+
   function pageContato() {
     const whUrl = whatsappLink(baseWhatsMessage());
     return `
       <div class="section">
-        <h3 class="section__title">Contato</h3>
-        <p class="section__lead">Atendimento mediante agendamento prévio.</p>
+        <h3 class="section__title">${t("nav.contact")}</h3>
+        <p class="section__lead">${t("contact.lead")}</p>
 
         <div class="grid grid--2">
           <div class="card">
-            <h4 class="card__title">Canais</h4>
+            <h4 class="card__title">${t("contact.channels")}</h4>
             <div class="contact">
-              <a href="tel:+${phoneE164}"><strong>Telefone/WhatsApp:</strong><span>${phoneDisplay}</span></a>
-              <a href="mailto:${email}"><strong>E-mail:</strong><span>${email}</span></a>
-              <span><strong>Endereço profissional:</strong><span>${address}</span></span>
+              <a href="tel:+${phoneE164}"><strong>${t("contact.phone")}:</strong><span>${phoneDisplay}</span></a>
+              <a href="mailto:${email}"><strong>${t("contact.email")}:</strong><span>${email}</span></a>
+              <span><strong>${t("contact.addr")}:</strong><span>${address}</span></span>
             </div>
-
             <div style="margin-top:14px">
-              <a class="btn btn--gold" href="${whUrl}" target="_blank" rel="noopener">Falar no WhatsApp</a>
+              <a class="btn btn--gold" href="${whUrl}" target="_blank" rel="noopener">${t("home.ctaWhats")}</a>
             </div>
           </div>
 
           <div class="card">
-            <h4 class="card__title">Observações</h4>
-            <p class="card__text">
-              Atendimento mediante agendamento prévio. Conteúdos disponibilizados possuem caráter informativo
-              e não configuram promessa de resultado.
-            </p>
+            <h4 class="card__title">${t("footer.disclaimerTitle")}</h4>
+            <p class="card__text">${t("footer.disclaimer")}</p>
             <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;">
-              <a class="btn btn--ghost" href="#/agendamento">Agendar Atendimento</a>
-              <a class="btn btn--ghost" href="#/atendimento">Como funciona</a>
+              <a class="btn btn--ghost" href="#/agendamento">${t("nav.schedule")}</a>
+              <a class="btn btn--ghost" href="#/atendimento">${t("nav.care")}</a>
             </div>
           </div>
         </div>
@@ -555,47 +506,93 @@
     `;
   }
 
-  // AGENDAMENTO ONLINE (calendário só dias disponíveis)
+  // AGENDAMENTO
   let selectedISO = null;
 
   function pageAgendamento() {
     return `
       <div class="section">
-        <h3 class="section__title">Agendamento Online</h3>
-        <p class="section__lead">
-          Selecione um dia disponível para solicitar seu atendimento via WhatsApp (mensagem pronta).
-          Prazos de resposta podem variar conforme demanda.
-        </p>
+        <h3 class="section__title">${t("nav.schedule")}</h3>
+        <p class="section__lead">${t("schedule.lead")}</p>
 
         <div class="calendarWrap">
           <div class="calendar" id="calendar"></div>
 
-          <div class="note" id="selectedNote">Selecione um dia disponível:</div>
+          <div class="note" id="selectedNote">${t("schedule.pick")}</div>
 
           <a id="confirmBtn" class="btn btn--gold" href="#" target="_blank" rel="noopener" style="pointer-events:none; opacity:.55">
-            Confirmar no WhatsApp
+            ${t("schedule.confirm")}
           </a>
 
-          <div class="note">
-            A agenda abaixo mostra apenas os dias disponíveis. Você pode editar os dias no arquivo <b>js/calendar.js</b>.
-          </div>
+          <div class="note">${t("schedule.hint")}</div>
         </div>
       </div>
     `;
   }
 
-  // ===== ROUTER =====
-  // Menu profissional:
-  // Início | Quem Sou | Atuação | Serviços | Atendimento | Conteúdos | Contato | Agendamento
+  function pagePrivacidade() {
+    return `
+      <div class="section">
+        <h3 class="section__title">${t("footer.privacy")}</h3>
+        <p class="section__lead">${t("privacy.lead")}</p>
+        <div class="grid">
+          <div class="card"><p class="card__text">${t("privacy.text")}</p></div>
+        </div>
+      </div>
+    `;
+  }
+
+  function pageTermos() {
+    return `
+      <div class="section">
+        <h3 class="section__title">${t("footer.terms")}</h3>
+        <p class="section__lead">${t("terms.lead")}</p>
+        <div class="grid">
+          <div class="card"><p class="card__text">${t("terms.text")}</p></div>
+        </div>
+      </div>
+    `;
+  }
+
+  // ===== ROUTER (aceita AS ROTAS do seu index.html) =====
+  // Seu index usa:
+  // #/inicio
+  // #/quem-sou
+  // #/atuacao
+  // #/servicos
+  // #/atendimento
+  // #/artigos | #/atualizacoes | #/materiais | #/faq
+  // #/contato
+  // #/agendamento
+  // #/privacidade
+  // #/termos
+
   const routes = {
-    inicio: pageHome,
-    quemsou: pageQuemSou,
-    atuacao: pageAtuacao,
-    servicos: pageServicos,
-    atendimento: pageAtendimento,
-    conteudos: pageConteudos,
-    contato: pageContato,
-    agendamento: pageAgendamento
+    "inicio": pageInicio,
+
+    "quem-sou": pageQuemSou,
+    "quem_sou": pageQuemSou,
+    "quemsou": pageQuemSou,
+
+    "atuacao": pageAtuacao,
+
+    "servicos": pageServicos,
+
+    "atendimento": pageAtendimento,
+
+    // Conteúdos
+    "conteudos": pageConteudosHub,
+    "artigos": pageArtigos,
+    "atualizacoes": pageAtualizacoes,
+    "materiais": pageMateriais,
+    "faq": pageFAQ,
+
+    "contato": pageContato,
+
+    "agendamento": pageAgendamento,
+
+    "privacidade": pagePrivacidade,
+    "termos": pageTermos
   };
 
   function setActiveNav(route) {
@@ -631,13 +628,14 @@
 
     window.setTimeout(() => {
       if (r === "agendamento") initCalendar();
-      configureWhatsAppFloat();
+      configureWhatsAppLinks();
+      closeDropdown();
     }, 220);
   }
 
   window.addEventListener("hashchange", renderRoute);
 
-  // ===== CALENDÁRIO (MOSTRA APENAS DIAS DISPONÍVEIS) =====
+  // ===== CALENDÁRIO (SÓ DIAS DISPONÍVEIS) =====
   function initCalendar() {
     selectedISO = null;
 
@@ -650,16 +648,29 @@
     let viewMonth = today.getMonth();
 
     function monthName(m) {
-      const months = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
-      if (currentLang === "en") return ["January","February","March","April","May","June","July","August","September","October","November","December"][m];
-      if (currentLang === "es") return ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"][m];
-      return months[m];
+      const pt = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
+      const en = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+      const es = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+      if (currentLang === "en") return en[m];
+      if (currentLang === "es") return es[m];
+      return pt[m];
     }
 
     function dowName(i) {
-      if (currentLang === "en") return ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"][i];
-      if (currentLang === "es") return ["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"][i];
-      return ["Dom","Seg","Ter","Qua","Qui","Sex","Sáb"][i];
+      const pt = ["Dom","Seg","Ter","Qua","Qui","Sex","Sáb"];
+      const en = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+      const es = ["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"];
+      if (currentLang === "en") return en[i];
+      if (currentLang === "es") return es[i];
+      return pt[i];
+    }
+
+    function toISO(date) {
+      if (window.CalendarHelpers?.toISODate) return window.CalendarHelpers.toISODate(date);
+      const y = date.getFullYear();
+      const m = String(date.getMonth() + 1).padStart(2, "0");
+      const d = String(date.getDate()).padStart(2, "0");
+      return `${y}-${m}-${d}`;
     }
 
     function build() {
@@ -674,7 +685,6 @@
 
       const grid = document.getElementById("calGrid");
 
-      // DOW header
       for (let i = 0; i < 7; i++) {
         const el = document.createElement("div");
         el.className = "calendar__dow";
@@ -686,19 +696,15 @@
       const startDow = first.getDay();
       const lastDay = new Date(viewYear, viewMonth + 1, 0).getDate();
 
-      // blanks before first
       for (let i = 0; i < startDow; i++) {
         const b = document.createElement("div");
         b.className = "day day--blank";
         grid.appendChild(b);
       }
 
-      // days: ONLY available, else blank
       for (let d = 1; d <= lastDay; d++) {
         const date = new Date(viewYear, viewMonth, d);
-        const iso = window.CalendarHelpers?.toISODate
-          ? window.CalendarHelpers.toISODate(date)
-          : `${viewYear}-${String(viewMonth + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+        const iso = toISO(date);
 
         if (avail.has(iso)) {
           const dayEl = document.createElement("div");
@@ -752,7 +758,7 @@
             ? `¡Hola! Me gustaría agendar una consulta el ${formatted}. ¿Podría confirmarme el horario disponible?`
             : `Olá! Gostaria de agendar um atendimento no dia ${formatted}. Pode confirmar o horário disponível?`;
 
-      if (note) note.textContent = `Dia selecionado: ${formatted}`;
+      if (note) note.textContent = `${t("schedule.selected")}: ${formatted}`;
       if (btn) {
         btn.href = whatsappLink(msg);
         btn.style.pointerEvents = "auto";
