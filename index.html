@@ -3,13 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#0B1E33" />
+  <meta name="theme-color" content="#6F8F8D" />
   <meta name="description" content="Rejane Maria Barros Silva — Advocacia Tributária e Previdenciária — OAB/MT 29.296" />
   <title>Rejane Maria Barros Silva | Tributário e Previdenciário</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Mantém Cinzel + Inter -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Rubik (apenas para o nome grande) -->
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./css/style.css" />
 </head>
@@ -47,9 +51,10 @@
   <header class="hero">
     <div class="hero__bg"></div>
     <div class="container hero__content">
-      <!-- SEM IMAGEM/LOGO -->
       <div class="hero__titleblock">
-        <h1 class="hero__name" data-i18n="brand.name">REJANE MARIA BARROS SILVA</h1>
+        <!-- RUBIK só no nome -->
+        <h1 class="hero__name hero__name--rubik" data-i18n="brand.name">REJANE MARIA BARROS SILVA</h1>
+
         <div class="hero__subtitle" data-i18n="brand.subtitle">
           Advogada — OAB/MT 29.296
         </div>
@@ -69,6 +74,8 @@
         <div class="hero__cta">
           <a class="btn btn--gold" href="#/agendamento" data-i18n="home.ctaSchedule">Agendar Atendimento</a>
           <a class="btn btn--ghost" id="heroWhats" href="#" target="_blank" rel="noopener" data-i18n="home.ctaWhats">Falar no WhatsApp</a>
+          <!-- novo: assinatura -->
+          <a class="btn btn--ghost" href="#/assinatura" data-i18n="nav.subscription">Assinatura</a>
         </div>
       </div>
 
@@ -97,6 +104,7 @@
         </div>
 
         <a class="nav__link" href="#/contato" data-i18n="nav.contact">Contato</a>
+        <a class="nav__link" href="#/assinatura" data-i18n="nav.subscription">Assinatura</a>
         <a class="nav__link nav__link--pill" href="#/agendamento" data-i18n="nav.schedule">Agendamento</a>
       </div>
     </nav>
@@ -107,33 +115,35 @@
     <section id="page" class="page page--enter"></section>
   </main>
 
+  <!-- Footer: ESQUERDA = contato, DIREITA = avisos -->
   <footer class="footer">
-    <div class="container footer__inner">
-      <div class="footer__brand">
+    <div class="container footer__inner footer__two">
+      <div class="footer__left">
         <div class="footer__name" data-i18n="footer.name">Rejane Maria Barros Silva — OAB/MT 29.296</div>
+        <div class="footer__contacts">
+          <a href="tel:+5565999964842">(65) 99996-4842</a>
+          <a href="mailto:rejanesilva.advocacia@hotmail.com">rejanesilva.advocacia@hotmail.com</a>
+          <span>Av. Desembargador J.P.F. Mendes, nº 544, Centro, Diamantino-MT</span>
+        </div>
+      </div>
+
+      <div class="footer__right">
+        <div class="footer__title" data-i18n="footer.noticesTitle">Avisos</div>
         <div class="footer__desc" data-i18n="footer.desc">
           Atuação profissional pautada na ética, na responsabilidade técnica e no respeito às normas da OAB.
         </div>
         <div class="footer__disclaimer" data-i18n="footer.disclaimer">
           Conteúdos disponibilizados possuem caráter informativo e não configuram promessa de resultado.
         </div>
+
         <div class="footer__links">
           <a href="#/privacidade" data-i18n="footer.privacy">Política de Privacidade</a>
           <span class="sep">|</span>
           <a href="#/termos" data-i18n="footer.terms">Termos de Uso</a>
         </div>
-      </div>
 
-      <div class="footer__contacts">
-        <a href="tel:+5565999964842">(65) 99996-4842</a>
-        <a href="mailto:rejanesilva.advocacia@hotmail.com">rejanesilva.advocacia@hotmail.com</a>
-        <span>Av. Desembargador J.P.F. Mendes, nº 544, Centro, Diamantino-MT</span>
-        <div class="mutedSmall" data-i18n="footer.online">
-          Atendimento jurídico online para todo o Brasil, com segurança e sigilo.
-        </div>
+        <div class="footer__copy">© <span id="year"></span></div>
       </div>
-
-      <div class="footer__copy">© <span id="year"></span></div>
     </div>
   </footer>
 
