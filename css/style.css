@@ -441,10 +441,70 @@ a{ color: inherit; text-decoration: none; }
 }
 .whats__text{ font-weight: 900; letter-spacing:.2px; }
 
-.aboutGrid {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 32px;
-  align-items: center;
+/* ===== QUEM SOU — FOTO MENOR + FILTRO JURÍDICO ===== */
+.aboutGrid{
+  display:grid;
+  grid-template-columns: 220px 1fr; /* menor */
+  gap: 26px;
+  align-items: start;
 }
+
+.aboutPhoto{
+  display:flex;
+  justify-content:center;
+}
+
+.aboutPhoto .aboutImg,
+.aboutPhoto img{
+  width: 220px;            /* tamanho menor */
+  max-width: 220px;
+  height: 280px;           /* retrato elegante */
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.16);
+
+  /* filtro jurídico (sobrio e premium) */
+  filter: grayscale(18%) contrast(1.06) brightness(1.02) saturate(.9);
+
+  /* moldura dourada discreta */
+  border: 1px solid rgba(199, 155, 75, .55);
+  background: #fff;
+}
+
+/* detalhe de assinatura (opcional, bem discreto) */
+.aboutPhoto{
+  position: relative;
+}
+.aboutPhoto:after{
+  content:"";
+  position:absolute;
+  bottom:-10px;
+  left:50%;
+  transform:translateX(-50%);
+  width: 120px;
+  height: 2px;
+  border-radius: 99px;
+  background: rgba(199,155,75,.55);
+  filter: blur(.1px);
+}
+
+.aboutText p{
+  margin: 0 0 12px;
+  line-height: 1.75;
+  color: #2b2b2b;
+}
+
+/* Responsivo */
+@media (max-width: 900px){
+  .aboutGrid{
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .aboutPhoto .aboutImg,
+  .aboutPhoto img{
+    width: 210px;
+    height: 260px;
+  }
+}
+
 
