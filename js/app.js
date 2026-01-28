@@ -197,7 +197,8 @@
 
       <div class="aboutGrid">
         <div class="aboutPhoto">
-          <img src="./assets/perfil.jpeg" alt="Rejane Maria Barros Silva - Advogada">
+          <img class="aboutImg" src="./assets/perfil.jpeg" alt="Rejane Maria Barros Silva - Advogada">
+
         </div>
 
         <div class="aboutText">
