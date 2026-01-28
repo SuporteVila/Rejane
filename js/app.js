@@ -136,7 +136,7 @@
 
         <div class="aboutGrid">
           <div class="aboutPhoto">
-            <img src="./assets/rejane.jpg" class="aboutImg" alt="Rejane Maria Barros Silva" />
+            <img src="./assets/rejane.jpeg" class="aboutImg" alt="Rejane Maria Barros Silva" />
           </div>
 
           <div class="aboutText">
