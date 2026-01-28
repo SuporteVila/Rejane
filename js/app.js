@@ -191,36 +191,49 @@
   }
 
   function pageQuemSou() {
-    return `
-      <div class="section">
-        <h3 class="section__title">${t("nav.about")}</h3>
+  return `
+    <div class="section">
+      <h3 class="section__title">${t("nav.about")}</h3>
 
-        <p class="section__lead" style="max-width:980px;">
-          ${t("about.p1")}
-        </p>
-
-        <div class="grid grid--2">
-          <div class="card">
-            <h4 class="card__title">${t("about.trajTitle")}</h4>
-            <p class="card__text">${t("about.trajText")}</p>
-          </div>
-          <div class="card">
-            <h4 class="card__title">${t("about.commitTitle")}</h4>
-            <p class="card__text">${t("about.commitText")}</p>
-          </div>
+      <div class="aboutGrid">
+        <div class="aboutPhoto">
+          <img src="./assets/perfil.jpeg" alt="Rejane Maria Barros Silva - Advogada">
         </div>
 
-        ${divider()}
+        <div class="aboutText">
+          <p>
+            Sou advogada regularmente inscrita na OAB/MT sob o nº 29.296, com atuação nas áreas
+            de Direito Tributário e Direito Previdenciário.
+          </p>
 
-        <div class="grid">
-          <div class="card">
-            <h4 class="card__title">${t("about.onlineTitle")}</h4>
-            <p class="card__text">${t("about.onlineText")}</p>
-          </div>
+          <p>
+            Sou Mestre em Economia pela Universidade Federal de Mato Grosso (UFMT) e possuo
+            pós-graduação em Direito Tributário e Direito Previdenciário pela Escola Superior de Advocacia Nacional.
+          </p>
+
+          <p>
+            Minha atuação profissional é pautada pela análise técnica rigorosa, responsabilidade ética
+            e busca por soluções jurídicas sustentáveis. Ao longo da minha trajetória, atuei no Tribunal
+            de Justiça, Justiça Federal e em escritório de advocacia, além de experiência em docência universitária.
+          </p>
+
+          <p>
+            Acredito em uma advocacia séria, estratégica e comprometida com a proteção dos direitos
+            dos clientes, sempre com clareza, responsabilidade e ética.
+          </p>
         </div>
       </div>
-    `;
-  }
+
+      ${divider()}
+
+      <div class="card">
+        <h4 class="card__title">${t("about.onlineTitle")}</h4>
+        <p class="card__text">${t("about.onlineText")}</p>
+      </div>
+    </div>
+  `;
+}
+
 
   function pageAtuacao() {
     return `
