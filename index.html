@@ -7,18 +7,24 @@
   <meta name="description" content="Rejane Maria Barros Silva — Advocacia Tributária e Previdenciária — OAB/MT 29.296" />
   <title>Rejane Maria Barros Silva | Tributário e Previdenciário</title>
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- Mantém Cinzel + Inter -->
+  <!-- Inter (texto) + Cinzel (legado) -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <!-- Rubik (apenas para o nome grande) -->
+  <!-- Rubik (títulos grandes) -->
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@600;700;800&display=swap" rel="stylesheet">
 
+  <!-- CSS -->
   <link rel="stylesheet" href="./css/style.css" />
 </head>
+
 <body>
-  <!-- Top bar -->
+
+  <!-- =========================
+       TOPBAR
+       ========================= -->
   <div class="topbar">
     <div class="container topbar__inner">
       <div class="topbar__left">
@@ -35,7 +41,7 @@
       <div class="topbar__right">
         <div class="topbar__item">
           <span class="dot"></span>
-          <span>Av. Desembargador J.P.F. Mendes, nº 544, Centro, Diamantino-MT</span>
+          <span>Av. Desembargador J. P. F. Mendes, nº 544, Centro, Diamantino-MT</span>
         </div>
 
         <div class="lang" aria-label="Language selector">
@@ -47,13 +53,17 @@
     </div>
   </div>
 
-  <!-- Hero header -->
+  <!-- =========================
+       HERO
+       ========================= -->
   <header class="hero">
     <div class="hero__bg"></div>
+
     <div class="container hero__content">
       <div class="hero__titleblock">
-        <!-- RUBIK só no nome -->
-        <h1 class="hero__name hero__name--rubik" data-i18n="brand.name">REJANE MARIA BARROS SILVA</h1>
+        <h1 class="hero__name hero__name--rubik" data-i18n="brand.name">
+          REJANE MARIA BARROS SILVA
+        </h1>
 
         <div class="hero__subtitle" data-i18n="brand.subtitle">
           Advogada — OAB/MT 29.296
@@ -61,28 +71,42 @@
 
         <div class="hero__chips">
           <span class="chip" data-i18n="brand.chip1">Mestre em Economia (UFMT)</span>
-          <span class="chip" data-i18n="brand.chip2">Pós-grad. em Dir. Tributário e Previdenciário (ESA Nacional)</span>
+          <span class="chip" data-i18n="brand.chip2">
+            Pós-grad. em Dir. Tributário e Previdenciário (ESA Nacional)
+          </span>
         </div>
 
         <div class="hero__line"></div>
 
-        <h2 class="hero__headline" data-i18n="home.headline">Advocacia Tributária e Previdenciária</h2>
+        <h2 class="hero__headline" data-i18n="home.headline">
+          Advocacia Tributária e Previdenciária
+        </h2>
+
         <p class="hero__tagline" data-i18n="home.tagline">
-          Atuação técnica e estratégica com foco em segurança jurídica, análise individualizada e soluções responsáveis.
+          Atuação técnica e estratégica com foco em segurança jurídica,
+          análise individualizada e soluções responsáveis.
         </p>
 
         <div class="hero__cta">
-          <a class="btn btn--gold" href="#/agendamento" data-i18n="home.ctaSchedule">Agendar Atendimento</a>
-          <a class="btn btn--ghost" id="heroWhats" href="#" target="_blank" rel="noopener" data-i18n="home.ctaWhats">Falar no WhatsApp</a>
-          <!-- novo: assinatura -->
-          <a class="btn btn--ghost" href="#/assinatura" data-i18n="nav.subscription">Assinatura</a>
+          <a class="btn btn--gold" href="#/agendamento" data-i18n="home.ctaSchedule">
+            Agendar Atendimento
+          </a>
+          <a class="btn btn--ghost" id="heroWhats" href="#" target="_blank" rel="noopener"
+             data-i18n="home.ctaWhats">
+            Falar no WhatsApp
+          </a>
+          <a class="btn btn--ghost" href="#/assinatura" data-i18n="nav.subscription">
+            Assinatura
+          </a>
         </div>
       </div>
 
       <div class="hero__wave"></div>
     </div>
 
-    <!-- Nav -->
+    <!-- =========================
+         NAV
+         ========================= -->
     <nav class="nav">
       <div class="container nav__inner">
         <a class="nav__link" href="#/inicio" data-i18n="nav.home">Início</a>
@@ -93,7 +117,8 @@
 
         <div class="nav__group">
           <button class="nav__link nav__link--dropdown" id="btnConteudos" type="button">
-            <span data-i18n="nav.contents">Conteúdos</span> <span class="caret">▾</span>
+            <span data-i18n="nav.contents">Conteúdos</span>
+            <span class="caret">▾</span>
           </button>
           <div class="dropdown" id="menuConteudos" aria-hidden="true">
             <a class="dropdown__item" href="#/artigos" data-i18n="nav.articles">Artigos</a>
@@ -104,36 +129,49 @@
         </div>
 
         <a class="nav__link" href="#/contato" data-i18n="nav.contact">Contato</a>
-        <a class="nav__link" href="#/assinatura" data-i18n="nav.subscription">Assinatura</a>
-        <a class="nav__link nav__link--pill" href="#/agendamento" data-i18n="nav.schedule">Agendamento</a>
+        <a class="nav__link nav__link--pill" href="#/agendamento" data-i18n="nav.schedule">
+          Agendamento
+        </a>
       </div>
     </nav>
   </header>
 
-  <!-- Main (SPA pages) -->
+  <!-- =========================
+       MAIN (SPA)
+       ========================= -->
   <main class="container main">
     <section id="page" class="page page--enter"></section>
   </main>
 
-  <!-- Footer: ESQUERDA = contato, DIREITA = avisos -->
+  <!-- =========================
+       FOOTER
+       ========================= -->
   <footer class="footer">
     <div class="container footer__inner footer__two">
+
       <div class="footer__left">
-        <div class="footer__name" data-i18n="footer.name">Rejane Maria Barros Silva — OAB/MT 29.296</div>
+        <div class="footer__name" data-i18n="footer.name">
+          Rejane Maria Barros Silva — OAB/MT 29.296
+        </div>
+
         <div class="footer__contacts">
           <a href="tel:+5565999964842">(65) 99996-4842</a>
-          <a href="mailto:rejanesilva.advocacia@hotmail.com">rejanesilva.advocacia@hotmail.com</a>
-          <span>Av. Desembargador J.P.F. Mendes, nº 544, Centro, Diamantino-MT</span>
+          <a href="mailto:rejanesilva.advocacia@hotmail.com">
+            rejanesilva.advocacia@hotmail.com
+          </a>
+          <span>Av. Desembargador J. P. F. Mendes, nº 544, Centro, Diamantino-MT</span>
         </div>
       </div>
 
       <div class="footer__right">
         <div class="footer__title" data-i18n="footer.noticesTitle">Avisos</div>
         <div class="footer__desc" data-i18n="footer.desc">
-          Atuação profissional pautada na ética, na responsabilidade técnica e no respeito às normas da OAB.
+          Atuação profissional pautada na ética, na responsabilidade técnica e
+          no respeito às normas da OAB.
         </div>
         <div class="footer__disclaimer" data-i18n="footer.disclaimer">
-          Conteúdos disponibilizados possuem caráter informativo e não configuram promessa de resultado.
+          Conteúdos disponibilizados possuem caráter informativo e não configuram
+          promessa de resultado.
         </div>
 
         <div class="footer__links">
@@ -142,19 +180,28 @@
           <a href="#/termos" data-i18n="footer.terms">Termos de Uso</a>
         </div>
 
-        <div class="footer__copy">© <span id="year"></span></div>
+        <div class="footer__copy">
+          © <span id="year"></span>
+        </div>
       </div>
+
     </div>
   </footer>
 
-  <!-- Floating WhatsApp -->
+  <!-- =========================
+       WHATSAPP FLOAT
+       ========================= -->
   <a id="whatsFloat" class="whats" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
     <span class="whats__icon">✆</span>
     <span class="whats__text" data-i18n="whats.float">WhatsApp</span>
   </a>
 
+  <!-- =========================
+       SCRIPTS
+       ========================= -->
   <script src="./js/i18n.js"></script>
   <script src="./js/calendar.js"></script>
   <script src="./js/app.js"></script>
+
 </body>
 </html>
