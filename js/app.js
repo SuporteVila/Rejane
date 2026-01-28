@@ -10,6 +10,13 @@
   const email = "rejanesilva.advocacia@hotmail.com";
   const address = "Av. Desembargador J.P.F. Mendes, nº 544, Centro, Diamantino-MT";
 
+  // expõe config pro calendar.js
+  window.SITE = {
+    phoneE164,
+    waLink: (message) =>
+      `https://wa.me/${phoneE164}?text=${encodeURIComponent(message)}`,
+  };
+
   const LANG_KEY = "rs_lang";
   let currentLang = localStorage.getItem(LANG_KEY) || "pt";
 
@@ -18,7 +25,7 @@
   ======================= */
   const pageEl = document.getElementById("page");
   const yearEl = document.getElementById("year");
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
   /* =======================
      I18N HELPERS
@@ -29,14 +36,31 @@
 
   function applyI18n(root = document) {
     root.querySelectorAll("[data-i18n]").forEach((el) => {
-      el.textContent = t(el.getAttribute("data-i18n"));
+      const k = el.getAttribute("data-i18n");
+      el.textContent = t(k);
+    });
+
+    // opcional (se você quiser usar depois):
+    root.querySelectorAll("[data-i18n-title]").forEach((el) => {
+      el.setAttribute("title", t(el.getAttribute("data-i18n-title")));
+    });
+    root.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+      el.setAttribute("placeholder", t(el.getAttribute("data-i18n-placeholder")));
     });
   }
 
   function setLang(lang) {
     currentLang = lang;
     localStorage.setItem(LANG_KEY, lang);
+    syncLangButtons();
     render();
+  }
+
+  function syncLangButtons() {
+    document.querySelectorAll(".lang__btn").forEach((btn) => {
+      btn.classList.toggle("is-active", btn.dataset.lang === currentLang);
+    });
+    document.documentElement.setAttribute("lang", currentLang === "pt" ? "pt-BR" : currentLang);
   }
 
   document.querySelectorAll(".lang__btn").forEach((btn) => {
@@ -51,16 +75,7 @@
   }
 
   function waLink(message) {
-    return `https://wa.me/${phoneE164}?text=${encodeURIComponent(message)}`;
-  }
-
-  function toISO(d) {
-    return d.toISOString().split("T")[0];
-  }
-
-  function formatHuman(iso, lang) {
-    const d = new Date(iso + "T00:00:00");
-    return d.toLocaleDateString(lang === "pt" ? "pt-BR" : lang);
+    return window.SITE.waLink(message);
   }
 
   /* =======================
@@ -80,7 +95,7 @@
 
         <div class="actions">
           <a class="btn btn--gold" href="#/agendamento">${t("home.ctaSchedule")}</a>
-          <a class="btn btn--ghost" href="${waLink(t("whats.home"))}" target="_blank">${t("home.ctaWhats")}</a>
+          <a class="btn btn--ghost" href="${waLink(t("whats.home"))}" target="_blank" rel="noopener">${t("home.ctaWhats")}</a>
           <a class="btn btn--soft" href="#/assinatura">${t("home.ctaPlans")}</a>
         </div>
 
@@ -120,9 +135,11 @@
         <h3 class="section__title">${t("nav.about")}</h3>
 
         <div class="aboutGrid">
-          <img src="./assets/rejane.jpg" class="aboutPhoto" alt="Rejane Maria Barros Silva" />
+          <div class="aboutPhoto">
+            <img src="./assets/rejane.jpg" class="aboutImg" alt="Rejane Maria Barros Silva" />
+          </div>
 
-          <div>
+          <div class="aboutText">
             <p class="section__lead">${t("about.p1")}</p>
 
             <div class="grid grid--2">
@@ -212,7 +229,7 @@
               <ul class="list">
                 ${t("plans."+p+".items").split("|").map(i => `<li>${i}</li>`).join("")}
               </ul>
-              <a class="btn btn--gold mt" target="_blank"
+              <a class="btn btn--gold mt" target="_blank" rel="noopener"
                  href="${waLink(t("plans.whats")+" "+t("plans."+p+".title"))}">
                  ${t("plans.choose")}
               </a>
@@ -235,7 +252,7 @@
             <p><strong>${t("contact.email")}:</strong> ${email}</p>
             <p><strong>${t("contact.addr")}:</strong> ${address}</p>
 
-            <a class="btn btn--gold mt" href="${waLink(t("whats.contact"))}" target="_blank">
+            <a class="btn btn--gold mt" href="${waLink(t("whats.contact"))}" target="_blank" rel="noopener">
               ${t("contact.whats")}
             </a>
           </div>
@@ -255,14 +272,57 @@
       <div class="section">
         <h3 class="section__title">${t("nav.schedule")}</h3>
         <p class="section__lead">${t("agenda.lead")}</p>
-        <div id="calendar"></div>
-        <div class="mt">
-          <strong>${t("agenda.selected")}:</strong>
-          <span id="selectedLabel">—</span>
+
+        <div class="calendarWrap">
+          <div id="calendar"></div>
+
+          <div class="mt">
+            <strong>${t("agenda.selected")}:</strong>
+            <span id="selectedLabel">—</span>
+          </div>
+
+          <button id="confirmBtn" class="btn btn--gold mt" disabled>
+            ${t("agenda.confirm")}
+          </button>
+
+          <p class="note">${t("agenda.text")}</p>
         </div>
-        <button id="confirmBtn" class="btn btn--gold mt" disabled>
-          ${t("agenda.confirm")}
-        </button>
+      </div>
+    `;
+  }
+
+  function pageAtendimento() {
+    return `
+      <div class="section">
+        <h3 class="section__title">${t("care.title")}</h3>
+        <p class="section__lead">${t("care.lead")}</p>
+
+        <div class="grid grid--2">
+          <div class="card">
+            <h4>${t("agenda.title")}</h4>
+            <p>${t("agenda.text")}</p>
+            <a class="btn btn--soft mt" href="#/agendamento">${t("agenda.open")}</a>
+          </div>
+
+          <div class="card">
+            <h4>${t("nav.contact")}</h4>
+            <p>${t("contact.lead")}</p>
+            <a class="btn btn--gold mt" href="${waLink(t("whats.home"))}" target="_blank" rel="noopener">${t("home.ctaWhats")}</a>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function pageStub(titleKey, bodyText) {
+    return `
+      <div class="section">
+        <h3 class="section__title">${t(titleKey)}</h3>
+        <p class="section__lead">${bodyText}</p>
+
+        <div class="card">
+          <p class="card__text">${bodyText}</p>
+        </div>
       </div>
     `;
   }
@@ -279,28 +339,99 @@
     "/assinatura": pageAssinatura,
     "/contato": pageContato,
     "/agendamento": pageAgendamento,
+    "/atendimento": pageAtendimento,
+
+    "/artigos": () => pageStub("articles.title", "Em breve, conteúdos e publicações."),
+    "/atualizacoes": () => pageStub("updates.title", "Em breve, comunicados e atualizações."),
+    "/materiais": () => pageStub("materials.title", "Em breve, materiais informativos."),
+    "/faq": () => pageStub("faq.title", "Em breve, perguntas frequentes."),
+    "/privacidade": () => pageStub("privacy.title", "Em breve, política de privacidade."),
+    "/termos": () => pageStub("terms.title", "Em breve, termos de uso."),
   };
 
+  /* =======================
+     DROPDOWN (Conteúdos)
+  ======================= */
+  function initDropdown() {
+    const btn = document.getElementById("btnConteudos");
+    const menu = document.getElementById("menuConteudos");
+    if (!btn || !menu) return;
+
+    const open = () => {
+      menu.classList.add("is-open");
+      menu.setAttribute("aria-hidden", "false");
+    };
+    const close = () => {
+      menu.classList.remove("is-open");
+      menu.setAttribute("aria-hidden", "true");
+    };
+    const toggle = () => (menu.classList.contains("is-open") ? close() : open());
+
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      toggle();
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!menu.classList.contains("is-open")) return;
+      const target = e.target;
+      if (btn.contains(target) || menu.contains(target)) return;
+      close();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") close();
+    });
+
+    // fecha ao navegar por item
+    menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", close));
+  }
+
+  /* =======================
+     NAV ACTIVE
+  ======================= */
+  function syncActiveNav(hash) {
+    document.querySelectorAll(".nav__link").forEach((a) => {
+      const href = a.getAttribute("href");
+      if (!href || !href.startsWith("#/")) return;
+      a.classList.toggle("is-active", href === "#" + hash);
+    });
+  }
+
+  /* =======================
+     RENDER
+  ======================= */
   function render() {
     const hash = location.hash.replace("#", "") || "/";
     const page = routes[hash] || pageInicio;
+
+    // animação suave
+    pageEl.classList.remove("page--enter");
+    void pageEl.offsetWidth; // reflow
+    pageEl.classList.add("page--enter");
+
     pageEl.innerHTML = page();
     applyI18n(pageEl);
+    syncActiveNav(hash);
 
     // WhatsApp flutuante
     const wf = document.getElementById("whatsFloat");
     if (wf) wf.href = waLink(t("whats.float"));
 
-    // Home Whats
-    const hw = document.getElementById("homeWhatsInline");
-    if (hw) hw.href = waLink(t("whats.home"));
+    // WhatsApp do Hero
+    const heroWhats = document.getElementById("heroWhats");
+    if (heroWhats) heroWhats.href = waLink(t("whats.home"));
 
     // Calendário
     if (hash === "/agendamento" && window.initCalendar) {
-      initCalendar(currentLang);
+      window.initCalendar(currentLang, t);
     }
   }
 
   window.addEventListener("hashchange", render);
+
+  // init
+  syncLangButtons();
+  initDropdown();
   render();
 })();
