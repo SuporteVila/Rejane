@@ -440,3 +440,11 @@ a{ color: inherit; text-decoration: none; }
   font-weight: 1000;
 }
 .whats__text{ font-weight: 900; letter-spacing:.2px; }
+
+.aboutGrid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
